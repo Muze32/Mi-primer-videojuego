@@ -4,6 +4,7 @@ public class PausarJuego : MonoBehaviour
 {
     [SerializeField] private GameObject menuPausa;
     [SerializeField] private GameObject botonPausa;
+    [SerializeField] private GameObject verticalLayout;
     [SerializeField] private bool juegoPausado = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,6 +30,7 @@ public class PausarJuego : MonoBehaviour
     public void Reanudar()
     {
         menuPausa.SetActive(false);
+        verticalLayout.SetActive(false);
         botonPausa.SetActive(true);
         Time.timeScale = 1;
         juegoPausado = false;
@@ -37,6 +39,7 @@ public class PausarJuego : MonoBehaviour
     public void Pausar()
     {
         menuPausa.SetActive(true);
+        verticalLayout.SetActive(true);
         botonPausa.SetActive(false);
         Time.timeScale = 0;
         juegoPausado = true;
