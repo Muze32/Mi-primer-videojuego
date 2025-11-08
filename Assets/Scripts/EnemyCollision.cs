@@ -20,5 +20,7 @@ public class EnemyCollision : MonoBehaviour
         {
             Destroy(gameObject, 0.5f);
         }
+
+        
     }
 }
