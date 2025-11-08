@@ -1,0 +1,1391 @@
+fileFormatVersion: 2
+guid: 77960e6ee77fcbe45849d1aabaadc1ca
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3513122712302367885
+    second: humo1_0
+  - first:
+      213: 8414187182894411004
+    second: humo1_1
+  - first:
+      213: 3017005361937184860
+    second: humo1_2
+  - first:
+      213: -4375566526540123819
+    second: humo1_3
+  - first:
+      213: -5666301503361162051
+    second: humo1_4
+  - first:
+      213: -8612917079378891025
+    second: humo1_5
+  - first:
+      213: -3116805121428740024
+    second: humo1_6
+  - first:
+      213: 8965200961434039841
+    second: humo1_7
+  - first:
+      213: -4449950222356303344
+    second: humo1_8
+  - first:
+      213: 8206734171666389785
+    second: humo1_9
+  - first:
+      213: 5381456334258001893
+    second: humo1_10
+  - first:
+      213: -4833116463766351273
+    second: humo1_11
+  - first:
+      213: -5419391991064853294
+    second: humo1_12
+  - first:
+      213: 38188280102087574
+    second: humo1_13
+  - first:
+      213: 6477185054848305406
+    second: humo1_14
+  - first:
+      213: 3913677489195178185
+    second: humo1_15
+  - first:
+      213: -2343962759311180091
+    second: humo1_16
+  - first:
+      213: -6458518542198503652
+    second: humo1_17
+  - first:
+      213: 1896098212651814533
+    second: humo1_18
+  - first:
+      213: -3639202745057298555
+    second: humo1_19
+  - first:
+      213: 7583227584553749481
+    second: humo1_20
+  - first:
+      213: 2771638331196889420
+    second: humo1_21
+  - first:
+      213: 3525682022393780872
+    second: humo1_22
+  - first:
+      213: -7962520371401731896
+    second: humo1_23
+  - first:
+      213: 6830240874997570015
+    second: humo1_24
+  - first:
+      213: 5304795796979953319
+    second: humo1_25
+  - first:
+      213: 2886022777534727479
+    second: humo1_26
+  - first:
+      213: 8834042014199276606
+    second: humo1_27
+  - first:
+      213: -1568128517349235486
+    second: humo1_28
+  - first:
+      213: 1390331623255349550
+    second: humo1_29
+  - first:
+      213: -275766478355078667
+    second: humo1_30
+  - first:
+      213: -7710844286769641786
+    second: humo1_31
+  - first:
+      213: -1034770964758853646
+    second: humo1_32
+  - first:
+      213: 8685403924384100482
+    second: humo1_33
+  - first:
+      213: 4424635303764062755
+    second: humo1_34
+  - first:
+      213: -2317105690409264588
+    second: humo1_35
+  - first:
+      213: -4619167342051696603
+    second: humo1_36
+  - first:
+      213: -2773390555723523796
+    second: humo1_37
+  - first:
+      213: -4527621036505651626
+    second: humo1_38
+  - first:
+      213: 59423359151106087
+    second: humo1_39
+  - first:
+      213: 2713071576981199507
+    second: humo1_40
+  - first:
+      213: 6257299509822404744
+    second: humo1_41
+  - first:
+      213: -6730038597085580944
+    second: humo1_42
+  - first:
+      213: 652252253397586468
+    second: humo1_43
+  - first:
+      213: -3768098373581739924
+    second: humo1_44
+  - first:
+      213: 815432756824678492
+    second: humo1_45
+  - first:
+      213: -5783050717228455278
+    second: humo1_46
+  - first:
+      213: 5222143999363693364
+    second: humo1_47
+  - first:
+      213: 2999093922161905604
+    second: humo1_48
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: humo1_0
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 245
+        width: 101
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37b4cd8a181ee3fc0800000000000000
+      internalID: -3513122712302367885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_1
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 238
+        width: 107
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfce01e99a235c470800000000000000
+      internalID: 8414187182894411004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_2
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 323
+        width: 20
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c58f6b3546e8ed920800000000000000
+      internalID: 3017005361937184860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_3
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 232
+        width: 108
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5517c764d6dd643c0800000000000000
+      internalID: -4375566526540123819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_4
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 171
+        width: 128
+        height: 207
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db465e5ddc04d51b0800000000000000
+      internalID: -5666301503361162051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 269
+        width: 48
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: feee9bbac85c87880800000000000000
+      internalID: -8612917079378891025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_6
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 265
+        width: 51
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8482f1f6142eeb4d0800000000000000
+      internalID: -3116805121428740024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_7
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 250
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 126344656caca6c70800000000000000
+      internalID: 8965200961434039841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_8
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1
+        width: 125
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 012384089d99e32c0800000000000000
+      internalID: -4449950222356303344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_9
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 109
+        width: 400
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91b1c3c7f3d24e170800000000000000
+      internalID: 8206734171666389785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_10
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 156
+        width: 20
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e759b91606ceaa40800000000000000
+      internalID: 5381456334258001893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_11
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 151
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7525d13ee225decb0800000000000000
+      internalID: -4833116463766351273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_12
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 112
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d48bf182b37ac4b0800000000000000
+      internalID: -5419391991064853294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_13
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 136
+        width: 23
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69b6116d90ca78000800000000000000
+      internalID: 38188280102087574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_14
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 125
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef8c3b26d7593e950800000000000000
+      internalID: 6477185054848305406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_15
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 134
+        width: 21
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c8dbecd0fc205630800000000000000
+      internalID: 3913677489195178185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_16
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 136
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ce338c0a42987fd0800000000000000
+      internalID: -2343962759311180091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_17
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 110
+        width: 29
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c170cf4ca9bbe56a0800000000000000
+      internalID: -6458518542198503652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_18
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 107
+        width: 31
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58e4d58474b405a10800000000000000
+      internalID: 1896098212651814533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_19
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 117
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 587bb3b7264fe7dc0800000000000000
+      internalID: -3639202745057298555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_20
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 117
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9eb054c7f490d3960800000000000000
+      internalID: 7583227584553749481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_21
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 117
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c49d8d0a066d67620800000000000000
+      internalID: 2771638331196889420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_22
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 118
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88a13c79e1dbde030800000000000000
+      internalID: 3525682022393780872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_23
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 0
+        width: 96
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c0d9c1d8e17f7190800000000000000
+      internalID: -7962520371401731896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_24
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 89
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd9559c33e3e9ce50800000000000000
+      internalID: 6830240874997570015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_25
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 89
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7aea9fcdbab6e9940800000000000000
+      internalID: 5304795796979953319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_26
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 72
+        width: 41
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 735c4a4ec663d0820800000000000000
+      internalID: 2886022777534727479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_27
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 76
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e34693b3862d89a70800000000000000
+      internalID: 8834042014199276606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_28
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 90
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e42d39fb63ec3ae0800000000000000
+      internalID: -1568128517349235486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_29
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 8
+        width: 76
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e29902cbe337b4310800000000000000
+      internalID: 1390331623255349550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_30
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 90
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f16fa859d74c2cf0800000000000000
+      internalID: -275766478355078667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_31
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 84
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c6ceb899f39df490800000000000000
+      internalID: -7710844286769641786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_32
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 90
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f709ad3a41c3a1f0800000000000000
+      internalID: -1034770964758853646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_33
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 90
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 280b2bb1ad0c88870800000000000000
+      internalID: 8685403924384100482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_34
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 87
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3227285bd56776d30800000000000000
+      internalID: 4424635303764062755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_35
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 87
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43a9e10b6acf7dfd0800000000000000
+      internalID: -2317105690409264588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_36
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 93
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5206cea96cb65efb0800000000000000
+      internalID: -4619167342051696603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_37
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 95
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c291daecbffe289d0800000000000000
+      internalID: -2773390555723523796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_38
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 93
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 656ae79d7a8aa21c0800000000000000
+      internalID: -4527621036505651626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_39
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 64
+        width: 24
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 728ef85fa3d13d000800000000000000
+      internalID: 59423359151106087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_40
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 66
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39a5c2c8934c6a520800000000000000
+      internalID: 2713071576981199507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_41
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 76
+        width: 17
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 888b03860c466d650800000000000000
+      internalID: 6257299509822404744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_42
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 66
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 071bb00ad891a92a0800000000000000
+      internalID: -6730038597085580944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_43
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 3
+        width: 81
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42216bbf7f34d0900800000000000000
+      internalID: 652252253397586468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_44
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 76
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c68eee35e7605bbc0800000000000000
+      internalID: -3768098373581739924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_45
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 68
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c50a0c0a5cff05b00800000000000000
+      internalID: 815432756824678492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_46
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 43
+        width: 24
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29aa789330a7ebfa0800000000000000
+      internalID: -5783050717228455278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_47
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 79
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43bb200ac48c87840800000000000000
+      internalID: 5222143999363693364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: humo1_48
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 65
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cf4e76480cee9920800000000000000
+      internalID: 2999093922161905604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      humo1_0: -3513122712302367885
+      humo1_1: 8414187182894411004
+      humo1_10: 5381456334258001893
+      humo1_11: -4833116463766351273
+      humo1_12: -5419391991064853294
+      humo1_13: 38188280102087574
+      humo1_14: 6477185054848305406
+      humo1_15: 3913677489195178185
+      humo1_16: -2343962759311180091
+      humo1_17: -6458518542198503652
+      humo1_18: 1896098212651814533
+      humo1_19: -3639202745057298555
+      humo1_2: 3017005361937184860
+      humo1_20: 7583227584553749481
+      humo1_21: 2771638331196889420
+      humo1_22: 3525682022393780872
+      humo1_23: -7962520371401731896
+      humo1_24: 6830240874997570015
+      humo1_25: 5304795796979953319
+      humo1_26: 2886022777534727479
+      humo1_27: 8834042014199276606
+      humo1_28: -1568128517349235486
+      humo1_29: 1390331623255349550
+      humo1_3: -4375566526540123819
+      humo1_30: -275766478355078667
+      humo1_31: -7710844286769641786
+      humo1_32: -1034770964758853646
+      humo1_33: 8685403924384100482
+      humo1_34: 4424635303764062755
+      humo1_35: -2317105690409264588
+      humo1_36: -4619167342051696603
+      humo1_37: -2773390555723523796
+      humo1_38: -4527621036505651626
+      humo1_39: 59423359151106087
+      humo1_4: -5666301503361162051
+      humo1_40: 2713071576981199507
+      humo1_41: 6257299509822404744
+      humo1_42: -6730038597085580944
+      humo1_43: 652252253397586468
+      humo1_44: -3768098373581739924
+      humo1_45: 815432756824678492
+      humo1_46: -5783050717228455278
+      humo1_47: 5222143999363693364
+      humo1_48: 2999093922161905604
+      humo1_5: -8612917079378891025
+      humo1_6: -3116805121428740024
+      humo1_7: 8965200961434039841
+      humo1_8: -4449950222356303344
+      humo1_9: 8206734171666389785
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

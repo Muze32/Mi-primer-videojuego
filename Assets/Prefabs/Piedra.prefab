@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7406312116958301526}
   - component: {fileID: 8994877724246225006}
   - component: {fileID: 4405223842549520241}
+  - component: {fileID: -3706546359486605264}
   m_Layer: 0
   m_Name: Piedra
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2925374780621729316}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.9874, y: -1.7395, z: 0}
+  m_LocalPosition: {x: 3.8858962, y: -1.6603402, z: 0}
   m_LocalScale: {x: 0.25775555, y: 0.14763452, z: 0.1345}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -178,4 +179,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc48f45290abe37c9274b79e07220ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestructableObject
+  resistanceMedium: {fileID: 5562969981175484424, guid: 1575dca85a0e6d2b19ee02bd8fe6953f, type: 3}
+  resistanceLow: {fileID: -2347364318137738361, guid: d18dec31901c8161db7f69ac9fe6082f, type: 3}
   resistance: 25
+--- !u!95 &-3706546359486605264
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2925374780621729316}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ea035da502ac6171b92dc1814cfeb8a2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
