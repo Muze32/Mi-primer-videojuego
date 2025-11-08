@@ -4,9 +4,10 @@ public class LanzarSapo : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private Rigidbody2D rb;
-    private float fuerzaLanzamiento = 300f;
+    [SerializeField] private float fuerzaLanzamiento = 300f;
+    [SerializeField] private float maxDistance;
     [SerializeField] private Camera main;
-    private Vector2 startPosition, dragPosition;
+    private Vector2 startPosition, clampedPosition;
     private float startRotation;
     void Start()
     {
@@ -26,17 +27,27 @@ public class LanzarSapo : MonoBehaviour
     {
         if (main != null)
         {
-            dragPosition = main.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = dragPosition;
+            Vector2 dragPosition = main.ScreenToWorldPoint(Input.mousePosition);
+            clampedPosition = dragPosition;
+
+            float dragDistance = Vector2.Distance(startPosition, dragPosition);
+
+            //Limita la distancia de arrastre maxima para los personajes
+            if (dragDistance > maxDistance)
+            {
+                clampedPosition = startPosition + (dragPosition - startPosition).normalized * maxDistance; //Suma la pos inicial + un vector con tamaño equivalente a maxDistance
+            }
+
+            transform.position = clampedPosition;
         }
     }
 
     private void OnMouseUp()
     {
         rb.bodyType = RigidbodyType2D.Dynamic;
-        Vector2 direccionLanzamiento = startPosition - dragPosition;
+        Vector2 direccionLanzamiento = startPosition - clampedPosition;
         rb.AddForce(direccionLanzamiento * fuerzaLanzamiento);
-        Invoke("resetPosition", 5f);
+        Invoke("resetPosition", 3f);
     }
 
     private void resetPosition()

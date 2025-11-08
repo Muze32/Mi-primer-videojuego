@@ -3,7 +3,7 @@ using UnityEngine;
 public class PausarJuego : MonoBehaviour
 {
     [SerializeField] private GameObject menuPausa;
-    [SerializeField] private GameObject botonPausa;
+    [SerializeField] private GameObject btnPausa;
     [SerializeField] private GameObject verticalLayout;
     [SerializeField] private bool juegoPausado = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -31,7 +31,7 @@ public class PausarJuego : MonoBehaviour
     {
         menuPausa.SetActive(false);
         verticalLayout.SetActive(false);
-        botonPausa.SetActive(true);
+        btnPausa.SetActive(true);
         Time.timeScale = 1;
         juegoPausado = false;
     }
@@ -40,7 +40,7 @@ public class PausarJuego : MonoBehaviour
     {
         menuPausa.SetActive(true);
         verticalLayout.SetActive(true);
-        botonPausa.SetActive(false);
+        btnPausa.SetActive(false);
         Time.timeScale = 0;
         juegoPausado = true;
     }

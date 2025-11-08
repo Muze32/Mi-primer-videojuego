@@ -4,8 +4,7 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Cherries
-  - Pinchos
+  - Jugador
   layers:
   - Default
   - TransparentFX
