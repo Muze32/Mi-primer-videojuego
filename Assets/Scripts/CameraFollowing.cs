@@ -3,7 +3,7 @@ using UnityEngine;
 public class CameraFollowing : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    [SerializeField] private Transform sapo;
+    [SerializeField] private Transform jugador;
     [SerializeField] private float tope;
     private Vector3 posicionInicial;
     void Start()
@@ -13,9 +13,9 @@ public class CameraFollowing : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (sapo.position.x > transform.position.x && sapo.position.x < tope)
+        if (jugador.position.x > transform.position.x && jugador.position.x < tope)
         {
-            transform.position = new Vector3(sapo.position.x, transform.position.y, transform.position.z);
+            transform.position = new Vector3(jugador.position.x, transform.position.y, transform.position.z);
         }
     }
 

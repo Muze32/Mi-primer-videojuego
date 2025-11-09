@@ -73,6 +73,13 @@ public class CharacterQueueManager : MonoBehaviour
 
         // Asegura que aterrice exactamente en el punto final
         personaje.transform.position = end;
+
+        LanzarPersonaje lanzarScript = personaje.GetComponent<LanzarPersonaje>();
+        if (lanzarScript != null)
+        {
+            // Esto le da el control al jugador, permitiendo OnMouseDrag y OnMouseUp.
+            lanzarScript.enabled = true; 
+        }
     }
 
     private void AvanzarFilaVisualmente()

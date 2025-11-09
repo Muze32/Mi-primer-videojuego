@@ -11,23 +11,31 @@ public class LanzarPersonaje : MonoBehaviour
     private Vector2 startPosition, clampedPosition;
     private float startRotation;
     private static int personajesRestantes;
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        rb.bodyType = RigidbodyType2D.Kinematic;
-        startPosition = transform.position;
-        startRotation = rb.rotation;
-    }
+
     private void Awake()
     {
         // Solo inicializar si es la primera vez que se accede a esta clase en la escena
         if (personajesRestantes == 0)
         {
             personajesRestantes = GameObject.FindGameObjectsWithTag("Personaje").Length;
-            Debug.Log("Total de personajes iniciales: " + personajesRestantes);
         }
+        rb = GetComponent<Rigidbody2D>();
     }
+    void Start()
+    {
+        startPosition = transform.position;
+        startRotation = rb.rotation;
+        this.enabled = false;    
+    }
+    private void OnEnable()
+    {
+        if (rb != null)
+        {
+            rb.bodyType = RigidbodyType2D.Kinematic;
+            startPosition = transform.position;
 
+        }    
+    }
     private void OnMouseDrag()
     {
         if (main != null)
@@ -56,9 +64,8 @@ public class LanzarPersonaje : MonoBehaviour
 
         //Destruye el personaje despues de dos segundos
         Destroy(gameObject, 4f);
-        Debug.Log(personajesRestantes);
 
-        if(personajesRestantes <= 0)
+        if (personajesRestantes <= 0)
         {
             Invoke("resetPosition", 3.5f);
         }
