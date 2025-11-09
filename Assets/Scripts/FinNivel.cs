@@ -3,16 +3,18 @@ using UnityEngine.SceneManagement;
 
 public class FinNivel : MonoBehaviour
 {
+    [SerializeField] private QueueManager queueManager;
+    [SerializeField] private CameraFollowing cameraFollowing;
     private int personajesRestantes;
     private int enemigosRestantes;
     private GameObject personajeActual;
-    [SerializeField] private QueueManager queueManager;
-    [SerializeField] private CameraFollowing cameraFollowing;
-    public void actualizarPersonaje(GameObject personaje)
+
+    public void ActualizarPersonaje(GameObject personaje)
     {
         personajeActual = personaje;
     }
-    public void manejarFinal()
+
+    public void ManejarFinal()
     {
         //FIXME: Por alguna extraña razon, despues de agregar este script hay un ligero trabon cuando el primer personaje sube a la honda
         enemigosRestantes = GameObject.FindGameObjectsWithTag("Enemigo").Length;
@@ -21,7 +23,7 @@ public class FinNivel : MonoBehaviour
         if (enemigosRestantes == 0)
         {
             Debug.Log("Felicidades. Nivel completado");
-            Invoke("resetPosition", 2f);
+            Invoke("avanzarNivel", 2f);
         }
         else if (personajesRestantes <= 0)
         {
@@ -40,8 +42,14 @@ public class FinNivel : MonoBehaviour
         cameraFollowing.resetPosition();
         queueManager.ExecuteNextTurn();
     }
+    
     private void resetPosition()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void avanzarNivel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

@@ -60,7 +60,7 @@ public class LanzarPersonaje : MonoBehaviour
 
     private void llamarManejarFinal()
     {
-        finNivel.manejarFinal();
+        finNivel.ManejarFinal();
     }
 
     public void actualizarReferencias(Camera cam, FinNivel finalNivel)

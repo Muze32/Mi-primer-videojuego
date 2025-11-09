@@ -54,7 +54,7 @@ public class QueueManager : MonoBehaviour
     private void ActualizarReferencias(GameObject character)
     {
         cameraFollowing.actualizarPersonaje(character);
-        finNivel.actualizarPersonaje(character);
+        finNivel.ActualizarPersonaje(character);
     }
 
     //Asigna dependencias necesarias para el correcto funcionamiento de LanzarPersonaje
