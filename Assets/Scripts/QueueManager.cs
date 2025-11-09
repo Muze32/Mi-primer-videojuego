@@ -12,6 +12,7 @@ public class QueueManager : MonoBehaviour
     // Asigna el punto de la honda (destino) desde el Inspector.
     [SerializeField] private Transform puntoDeLanzamiento;
     [SerializeField] private CameraFollowing cameraFollowing;
+    [SerializeField] private FinNivel finNivel;
     private Queue<GameObject> characterQueue;
     void Start()
     {
@@ -25,8 +26,10 @@ public class QueueManager : MonoBehaviour
         if (characterQueue.Count > 0)
         {
             GameObject firstCharacter = characterQueue.Dequeue();
-            MoverPersonajeALaHonda(firstCharacter);
             cameraFollowing.actualizarPersonaje(firstCharacter);
+            //Asigna al personaje para luego ser eliminado
+            finNivel.actualizarPersonaje(firstCharacter);
+            MoverPersonajeALaHonda(firstCharacter);
         }
         if (characterQueue.Count > 0)
         {

@@ -7,27 +7,13 @@ public class LanzarPersonaje : MonoBehaviour
     [SerializeField] private float fuerzaLanzamiento = 300f;
     [SerializeField] private float maxDistance;
     [SerializeField] private Camera main;
-    [SerializeField] private QueueManager queueManager;
-    [SerializeField] private CameraFollowing cameraFollowing;
+    [SerializeField] private FinNivel finNivel;
     private Vector2 startPosition, clampedPosition;
-    private float startRotation;
-    private static int personajesRestantes;
 
+    //Orden de prioridad: Awake, OnEnable, Start
     private void Awake()
     {
-        // Solo inicializar si es la primera vez que se accede a esta clase en la escena
-        if (personajesRestantes == 0)
-        {
-            personajesRestantes = GameObject.FindGameObjectsWithTag("Personaje").Length;
-        }
         rb = GetComponent<Rigidbody2D>();
-    }
-    void Start()
-    {
-        startPosition = transform.position;
-        startRotation = rb.rotation;
-        //Se auto-desactiva para que QueueManager lo pueda activar a futuro para usar OnEnable()
-        this.enabled = false;
     }
     private void OnEnable()
     {
@@ -37,6 +23,11 @@ public class LanzarPersonaje : MonoBehaviour
             rb.bodyType = RigidbodyType2D.Kinematic;
             startPosition = transform.position;
         }
+    }
+    void Start()
+    {
+        //Se auto-desactiva para que QueueManager lo pueda activar a futuro para usar OnEnable()
+        this.enabled = false;
     }
     private void OnMouseDrag()
     {
@@ -52,38 +43,23 @@ public class LanzarPersonaje : MonoBehaviour
             {
                 clampedPosition = startPosition + (dragPosition - startPosition).normalized * maxDistance; //Suma la pos inicial + un vector con tamaño equivalente a maxDistance
             }
-
+            
             transform.position = clampedPosition;
         }
     }
 
     private void OnMouseUp()
     {
-        personajesRestantes -= 1;
         //Rb.Dynamic para que el objeto responda a las fisicas de unity
         rb.bodyType = RigidbodyType2D.Dynamic;
         Vector2 direccionLanzamiento = startPosition - clampedPosition;
         rb.AddForce(direccionLanzamiento * fuerzaLanzamiento);
-
-        //Si no hay mas personajes reinicia el nivel
-        if (personajesRestantes <= 0)
-        {
-            Invoke("resetPosition", 3.5f);
-        }
-
-        //Destruye el personaje despues de cuatro segundos y avanza la cola
-        Invoke("handleNextCharacter", 4f);
+        //Se comprueba la logica de manejar el final 2 segs despues del lanzamiento
+        Invoke("llamarManejarFinal", 2f); //TODO: Llamar la funcion despues de que el personaje se haya detenido (como en el juego original) no despues de x segundos
     }
 
-    private void handleNextCharacter()
+    private void llamarManejarFinal()
     {
-        Destroy(gameObject, .5f);
-        cameraFollowing.resetPosition();
-        queueManager.sortQueue();
-    }
-
-    private void resetPosition()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        finNivel.manejarFinal();
     }
 }
