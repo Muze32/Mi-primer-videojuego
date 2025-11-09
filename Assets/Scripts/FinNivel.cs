@@ -38,7 +38,7 @@ public class FinNivel : MonoBehaviour
     private void avanzarTurno()
     {
         cameraFollowing.resetPosition();
-        queueManager.sortQueue();
+        queueManager.ExecuteNextTurn();
     }
     private void resetPosition()
     {

@@ -5,11 +5,13 @@ using System.Linq; // Necesario para usar el método OrderBy
 
 public class QueueManager : MonoBehaviour
 {
+    [Header("Configuración de animacion")]
     [SerializeField] private float separationDistance = 1f;
     [SerializeField] private float alturaMaximaArco = 1.5f; // Altura del salto en el punto medio
     [SerializeField] private float duracionMovimiento = 0.5f; // Tiempo que tarda en llegar a la honda
     [SerializeField] private float duracionMovimientoFila = 0.3f;
-    // Asigna el punto de la honda (destino) desde el Inspector.
+
+    [Header("Dependencias del sistema (Inyección)")]
     [SerializeField] private Transform puntoDeLanzamiento;
     [SerializeField] private CameraFollowing cameraFollowing;
     [SerializeField] private Camera main;
@@ -18,33 +20,52 @@ public class QueueManager : MonoBehaviour
     private Queue<GameObject> characterQueue;
     void Start()
     {
+        createQueue();
+        ExecuteNextTurn();
+    }
+
+    private void createQueue()
+    {
         GameObject[] allCharacters = GameObject.FindGameObjectsWithTag("Personaje");
+        //Ordena la lista en base a posicion x de los personajes
         List<GameObject> orderedCharactersList = allCharacters.OrderByDescending(c => c.transform.position.x).ToList();
         characterQueue = new Queue<GameObject>(orderedCharactersList);
-        sortQueue();
     }
-    public void sortQueue()
+
+    public void ExecuteNextTurn()
     {
         //Maneja el primer elemento de la cola (moviendolo a la honda)
         if (characterQueue.Count > 0)
         {
             GameObject firstCharacter = characterQueue.Dequeue();
-            LanzarPersonaje lanzarScript = firstCharacter.GetComponent<LanzarPersonaje>();
-
-            if (lanzarScript != null)
-            {
-                lanzarScript.actualizarReferencias(main, finNivel);
-            }
-        
-            cameraFollowing.actualizarPersonaje(firstCharacter);
-            //Asigna al personaje para luego ser eliminado en FinNivel
-            finNivel.actualizarPersonaje(firstCharacter);
+            //Agrega elementos necesarios para el personaje
+            InjectDependencies(firstCharacter);
             MoverPersonajeALaHonda(firstCharacter);
+            ActualizarReferencias(firstCharacter);
         }
         //Maneja el resto de elementos de la cola
         if (characterQueue.Count > 0)
         {
             AvanzarFilaVisualmente();
+        }
+    }
+
+    //Actualiza la referencia para la camara y el script FinNivel
+    private void ActualizarReferencias(GameObject character)
+    {
+        cameraFollowing.actualizarPersonaje(character);
+        finNivel.actualizarPersonaje(character);
+    }
+
+    //Asigna dependencias necesarias para el correcto funcionamiento de LanzarPersonaje
+    private void InjectDependencies(GameObject character)
+    {
+        LanzarPersonaje lanzarScript = character.GetComponent<LanzarPersonaje>();
+
+        if (lanzarScript != null)
+        {
+            // Asignación de referencias centrales
+            lanzarScript.actualizarReferencias(main, finNivel);
         }
     }
 
@@ -57,6 +78,7 @@ public class QueueManager : MonoBehaviour
         StartCoroutine(MoverEnArco(personaje, personaje.transform.position, puntoDeLanzamiento.position));
     }
 
+    //Realiza la animacion del movimiento en arco hacia la honda
     private IEnumerator MoverEnArco(GameObject personaje, Vector3 start, Vector3 end)
     {
         float tiempo = duracionMovimiento;
@@ -93,10 +115,11 @@ public class QueueManager : MonoBehaviour
         if (lanzarScript != null)
         {
             // Esto le da el control al jugador, permitiendo OnMouseDrag y OnMouseUp.
-            lanzarScript.enabled = true; 
+            lanzarScript.enabled = true;
         }
     }
 
+    //Desplaza los personajes de la cola
     private void AvanzarFilaVisualmente()
     {
         // Mueve los personajes restantes de la cola a su nueva posición
@@ -111,6 +134,7 @@ public class QueueManager : MonoBehaviour
         }
     }
 
+    //Desplaza un personaje hacia la derecha
     private IEnumerator MoverPersonaje(Transform characterTransform, Vector3 end, float duration)
     {
         Vector3 start = characterTransform.position;

@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class CameraFollowing : MonoBehaviour
 {
-    [SerializeField] private Transform personaje;
     [SerializeField] private float tope;
+    private Transform personaje;
     private Vector3 posicionInicial;
     private bool shouldFollow = true;
     void Start()
@@ -23,7 +23,6 @@ public class CameraFollowing : MonoBehaviour
 
     public void resetPosition()
     {
-        Debug.Log("reiniciando camara");
         transform.position = posicionInicial;
         shouldFollow = false;
     }
