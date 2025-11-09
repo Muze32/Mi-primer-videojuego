@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq; // Necesario para usar el método OrderBy
 
-public class CharacterQueueManager : MonoBehaviour
+public class QueueManager : MonoBehaviour
 {
     [SerializeField] private float separationDistance = 1f;
     [SerializeField] private float alturaMaximaArco = 1.5f; // Altura del salto en el punto medio
@@ -11,6 +11,7 @@ public class CharacterQueueManager : MonoBehaviour
     [SerializeField] private float duracionMovimientoFila = 0.3f;
     // Asigna el punto de la honda (destino) desde el Inspector.
     [SerializeField] private Transform puntoDeLanzamiento;
+    [SerializeField] private CameraFollowing cameraFollowing;
     private Queue<GameObject> characterQueue;
     void Start()
     {
@@ -19,12 +20,13 @@ public class CharacterQueueManager : MonoBehaviour
         characterQueue = new Queue<GameObject>(orderedCharactersList);
         sortQueue();
     }
-    private void sortQueue()
+    public void sortQueue()
     {
         if (characterQueue.Count > 0)
         {
             GameObject firstCharacter = characterQueue.Dequeue();
             MoverPersonajeALaHonda(firstCharacter);
+            cameraFollowing.actualizarPersonaje(firstCharacter);
         }
         if (characterQueue.Count > 0)
         {

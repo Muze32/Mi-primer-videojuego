@@ -7,6 +7,8 @@ public class LanzarPersonaje : MonoBehaviour
     [SerializeField] private float fuerzaLanzamiento = 300f;
     [SerializeField] private float maxDistance;
     [SerializeField] private Camera main;
+    [SerializeField] private QueueManager queueManager;
+    [SerializeField] private CameraFollowing cameraFollowing;
     private Vector2 startPosition, clampedPosition;
     private float startRotation;
     private static int personajesRestantes;
@@ -24,16 +26,17 @@ public class LanzarPersonaje : MonoBehaviour
     {
         startPosition = transform.position;
         startRotation = rb.rotation;
-        this.enabled = false;    
+        //Se auto-desactiva para que QueueManager lo pueda activar a futuro para usar OnEnable()
+        this.enabled = false;
     }
     private void OnEnable()
     {
+        //Cuando se activa el script se cambia RB a kinematic (se activa despues de mover visualmente los personajes)
         if (rb != null)
         {
             rb.bodyType = RigidbodyType2D.Kinematic;
             startPosition = transform.position;
-
-        }    
+        }
     }
     private void OnMouseDrag()
     {
@@ -57,17 +60,26 @@ public class LanzarPersonaje : MonoBehaviour
     private void OnMouseUp()
     {
         personajesRestantes -= 1;
+        //Rb.Dynamic para que el objeto responda a las fisicas de unity
         rb.bodyType = RigidbodyType2D.Dynamic;
         Vector2 direccionLanzamiento = startPosition - clampedPosition;
         rb.AddForce(direccionLanzamiento * fuerzaLanzamiento);
 
-        //Destruye el personaje despues de dos segundos
-        Destroy(gameObject, 4f);
-
+        //Si no hay mas personajes reinicia el nivel
         if (personajesRestantes <= 0)
         {
             Invoke("resetPosition", 3.5f);
         }
+
+        //Destruye el personaje despues de cuatro segundos y avanza la cola
+        Invoke("handleNextCharacter", 4f);
+    }
+
+    private void handleNextCharacter()
+    {
+        Destroy(gameObject, .5f);
+        cameraFollowing.resetPosition();
+        queueManager.sortQueue();
     }
 
     private void resetPosition()
