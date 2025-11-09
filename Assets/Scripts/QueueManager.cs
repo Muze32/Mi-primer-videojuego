@@ -12,7 +12,9 @@ public class QueueManager : MonoBehaviour
     // Asigna el punto de la honda (destino) desde el Inspector.
     [SerializeField] private Transform puntoDeLanzamiento;
     [SerializeField] private CameraFollowing cameraFollowing;
+    [SerializeField] private Camera main;
     [SerializeField] private FinNivel finNivel;
+    [SerializeField] private GameObject personajePrefab;
     private Queue<GameObject> characterQueue;
     void Start()
     {
@@ -23,14 +25,23 @@ public class QueueManager : MonoBehaviour
     }
     public void sortQueue()
     {
+        //Maneja el primer elemento de la cola (moviendolo a la honda)
         if (characterQueue.Count > 0)
         {
             GameObject firstCharacter = characterQueue.Dequeue();
+            LanzarPersonaje lanzarScript = firstCharacter.GetComponent<LanzarPersonaje>();
+
+            if (lanzarScript != null)
+            {
+                lanzarScript.actualizarReferencias(main, finNivel);
+            }
+        
             cameraFollowing.actualizarPersonaje(firstCharacter);
-            //Asigna al personaje para luego ser eliminado
+            //Asigna al personaje para luego ser eliminado en FinNivel
             finNivel.actualizarPersonaje(firstCharacter);
             MoverPersonajeALaHonda(firstCharacter);
         }
+        //Maneja el resto de elementos de la cola
         if (characterQueue.Count > 0)
         {
             AvanzarFilaVisualmente();

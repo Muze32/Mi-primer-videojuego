@@ -6,8 +6,8 @@ public class LanzarPersonaje : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] private float fuerzaLanzamiento = 300f;
     [SerializeField] private float maxDistance;
-    [SerializeField] private Camera main;
-    [SerializeField] private FinNivel finNivel;
+    private Camera main;
+    private FinNivel finNivel;
     private Vector2 startPosition, clampedPosition;
 
     //Orden de prioridad: Awake, OnEnable, Start
@@ -61,5 +61,11 @@ public class LanzarPersonaje : MonoBehaviour
     private void llamarManejarFinal()
     {
         finNivel.manejarFinal();
+    }
+
+    public void actualizarReferencias(Camera cam, FinNivel finalNivel)
+    {
+        main = cam;
+        finNivel = finalNivel;
     }
 }
