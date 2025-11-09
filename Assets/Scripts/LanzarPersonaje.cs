@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LanzarPersonaje : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class LanzarPersonaje : MonoBehaviour
     [SerializeField] private Camera main;
     private Vector2 startPosition, clampedPosition;
     private float startRotation;
+    private static int personajesRestantes;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -16,11 +18,14 @@ public class LanzarPersonaje : MonoBehaviour
         startPosition = transform.position;
         startRotation = rb.rotation;
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-
+        // Solo inicializar si es la primera vez que se accede a esta clase en la escena
+        if (personajesRestantes == 0)
+        {
+            personajesRestantes = GameObject.FindGameObjectsWithTag("Personaje").Length;
+            Debug.Log("Total de personajes iniciales: " + personajesRestantes);
+        }
     }
 
     private void OnMouseDrag()
@@ -44,19 +49,23 @@ public class LanzarPersonaje : MonoBehaviour
 
     private void OnMouseUp()
     {
+        personajesRestantes -= 1;
         rb.bodyType = RigidbodyType2D.Dynamic;
         Vector2 direccionLanzamiento = startPosition - clampedPosition;
         rb.AddForce(direccionLanzamiento * fuerzaLanzamiento);
-        Invoke("resetPosition", 3f);
+
+        //Destruye el personaje despues de dos segundos
+        Destroy(gameObject, 4f);
+        Debug.Log(personajesRestantes);
+
+        if(personajesRestantes <= 0)
+        {
+            Invoke("resetPosition", 3.5f);
+        }
     }
 
     private void resetPosition()
     {
-        transform.position = startPosition;
-        rb.rotation = startRotation;
-        rb.bodyType = RigidbodyType2D.Kinematic;
-        rb.linearVelocity = Vector2.zero;
-        rb.angularVelocity = 0f;
-        main.GetComponent<CameraFollowing>().resetPosition();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

@@ -14,6 +14,7 @@ public class DestructableObject : MonoBehaviour
         animator = GetComponent<Animator>();
         resistanceIni = resistance;
         spriteR = GetComponent<SpriteRenderer>();
+        animator.enabled = false;
     }
     
     private void OnCollisionEnter2D(Collision2D collision)
@@ -23,8 +24,9 @@ public class DestructableObject : MonoBehaviour
         //Destruye el objeto si la velocidad es mayor a su resistencia
         if (velColision > resistance)
         {
+            animator.enabled = true;
             animator.SetTrigger("dead");
-            Destroy(gameObject, 0.2f);
+            Destroy(gameObject, .2f);
         }
         else
         {
