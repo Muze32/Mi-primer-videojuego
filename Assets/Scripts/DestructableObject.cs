@@ -12,8 +12,8 @@ public class DestructableObject : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-        resistanceIni = resistance;
         spriteR = GetComponent<SpriteRenderer>();
+        resistanceIni = resistance;
         animator.enabled = false;
     }
     

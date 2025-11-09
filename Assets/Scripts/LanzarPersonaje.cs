@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class LanzarPersonaje : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     private Rigidbody2D rb;
     [SerializeField] private float fuerzaLanzamiento = 300f;
     [SerializeField] private float maxDistance;

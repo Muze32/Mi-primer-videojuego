@@ -6,13 +6,12 @@ using System.Linq; // Necesario para usar el método OrderBy
 public class CharacterQueueManager : MonoBehaviour
 {
     [SerializeField] private float separationDistance = 1f;
-    private Queue<GameObject> characterQueue;
     [SerializeField] private float alturaMaximaArco = 1.5f; // Altura del salto en el punto medio
     [SerializeField] private float duracionMovimiento = 0.5f; // Tiempo que tarda en llegar a la honda
     [SerializeField] private float duracionMovimientoFila = 0.3f;
-
     // Asigna el punto de la honda (destino) desde el Inspector.
     [SerializeField] private Transform puntoDeLanzamiento;
+    private Queue<GameObject> characterQueue;
     void Start()
     {
         GameObject[] allCharacters = GameObject.FindGameObjectsWithTag("Personaje");

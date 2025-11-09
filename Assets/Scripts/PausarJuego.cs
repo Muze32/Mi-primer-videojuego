@@ -6,13 +6,6 @@ public class PausarJuego : MonoBehaviour
     [SerializeField] private GameObject btnPausa;
     [SerializeField] private GameObject verticalLayout;
     [SerializeField] private bool juegoPausado = false;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
