@@ -130,13 +130,17 @@ public class QueueManager : MonoBehaviour
             Vector3 targetPosition = character.transform.position + Vector3.right * separationDistance;
 
             // 2. Inicia la Corrutina: Mueve suavemente al personaje a la nueva posición.
-            StartCoroutine(MoverPersonaje(character.transform, targetPosition, duracionMovimientoFila));
+            StartCoroutine(MoverPersonaje(character, character.transform, targetPosition, duracionMovimientoFila));
         }
     }
 
     //Desplaza un personaje hacia la derecha
-    private IEnumerator MoverPersonaje(Transform characterTransform, Vector3 end, float duration)
+    private IEnumerator MoverPersonaje(GameObject character, Transform characterTransform, Vector3 end, float duration)
     {
+        //TODO: cambiar animacion a walking
+        CharacterStatus characterStatus = character.GetComponent<CharacterStatus>();
+        characterStatus.ChangeStatus("walking");
+
         Vector3 start = characterTransform.position;
         float tiempoTranscurrido = 0.0f;
 
@@ -150,7 +154,8 @@ public class QueueManager : MonoBehaviour
 
             yield return null; // Espera al siguiente frame
         }
-
+        //TODO: cambiar animacion a idle
+        characterStatus.ChangeStatus("idle");
         // Asegura que aterrice exactamente en el punto final
         characterTransform.position = end;
     }

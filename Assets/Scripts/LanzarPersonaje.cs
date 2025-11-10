@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.TextCore.Text;
 
 public class LanzarPersonaje : MonoBehaviour
 {
@@ -9,6 +9,7 @@ public class LanzarPersonaje : MonoBehaviour
     private Camera main;
     private FinNivel finNivel;
     private Vector2 startPosition, clampedPosition;
+    private CharacterStatus characterStatus;
 
     //Orden de prioridad: Awake, OnEnable, Start
     private void Awake()
@@ -26,6 +27,7 @@ public class LanzarPersonaje : MonoBehaviour
     }
     void Start()
     {
+        characterStatus = GetComponent<CharacterStatus>();
         //Se auto-desactiva para que QueueManager lo pueda activar a futuro para usar OnEnable()
         this.enabled = false;
     }
@@ -50,6 +52,8 @@ public class LanzarPersonaje : MonoBehaviour
 
     private void OnMouseUp()
     {
+        //TODO: cambiar animacion a airAnim
+        characterStatus.ChangeStatus("air");
         //Rb.Dynamic para que el objeto responda a las fisicas de unity
         rb.bodyType = RigidbodyType2D.Dynamic;
         Vector2 direccionLanzamiento = startPosition - clampedPosition;
