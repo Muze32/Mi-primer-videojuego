@@ -10,6 +10,7 @@ public class LanzarPersonaje : MonoBehaviour
     private FinNivel finNivel;
     private Vector2 startPosition, clampedPosition;
     private CharacterStatus characterStatus;
+    [SerializeField] private float maxVelocity = 50f;
 
     //Orden de prioridad: Awake, OnEnable, Start
     private void Awake()
@@ -31,6 +32,29 @@ public class LanzarPersonaje : MonoBehaviour
         //Se auto-desactiva para que QueueManager lo pueda activar a futuro para usar OnEnable()
         this.enabled = false;
     }
+
+    // NUEVO MÉTODO: Control de la física (incluyendo el límite de velocidad)
+    private void FixedUpdate()
+    {
+        // Solo aplicar el límite si el personaje ya fue lanzado (y no es kinematic)
+        if (rb.bodyType == RigidbodyType2D.Dynamic)
+        {
+            // Obtener la magnitud (velocidad escalar) actual
+            float speed = rb.linearVelocity.magnitude;
+
+            // Si la velocidad supera el límite
+            if (speed > maxVelocity)
+            {
+                // Limitar la velocidad
+                // rb.velocity.normalized obtiene el vector de dirección con magnitud 1
+                // al multiplicarlo por maxVelocity, la velocidad se ajusta al límite
+                rb.linearVelocity = rb.linearVelocity.normalized * maxVelocity;
+            }
+        }
+    }
+
+
+
     private void OnMouseDrag()
     {
         if (main != null)

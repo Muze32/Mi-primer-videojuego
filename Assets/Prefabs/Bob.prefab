@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3587038402947863103}
   - component: {fileID: 5480843027133209509}
   - component: {fileID: 1347361519120439664}
+  - component: {fileID: 3183264206975458650}
   m_Layer: 0
   m_Name: Bob
   m_TagString: Personaje
@@ -29,9 +30,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 904120993041536230}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: -2.36, z: 0}
-  m_LocalScale: {x: 0.96738076, y: 0.99195856, z: 0.8937369}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -11.42, y: -3, z: 0}
+  m_LocalScale: {x: 0.19787969, y: 0.20290712, z: 0.18281567}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -106,7 +107,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.5
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 2
@@ -131,7 +132,7 @@ Animator:
   m_GameObject: {fileID: 904120993041536230}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: da57d46c748237578ac790adc4e7b242, type: 2}
+  m_Controller: {fileID: 9100000, guid: 56a5e7f55ef30d181b385865564f55e0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -157,7 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LanzarSapo
   fuerzaLanzamiento: 300
   maxDistance: 4
-  masa: 0.5
+  maxVelocity: 38
 --- !u!61 &1347361519120439664
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -192,7 +193,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.09491426, y: 0.057266712}
+  m_Offset: {x: -0.43246722, y: 0.5110321}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -202,5 +203,17 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.7706752, y: 3.885643}
+  m_Size: {x: 16.295988, y: 23.391125}
   m_EdgeRadius: 0
+--- !u!114 &3183264206975458650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904120993041536230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e417b7b0371ee262cb025c2e294ba3b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::characterMovement

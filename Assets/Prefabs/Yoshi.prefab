@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 6283703574127393570}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14, y: -1.9603, z: 0}
+  m_LocalPosition: {x: -22.24, y: -3.17, z: 0}
   m_LocalScale: {x: 0.16463998, y: 0.16882293, z: 0.15210643}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -132,7 +132,7 @@ Animator:
   m_GameObject: {fileID: 6283703574127393570}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c96648745134d394e8becd04e6bee34e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -156,9 +156,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f67b8267a1de36946998b23ab22d597b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LanzarSapo
-  fuerzaLanzamiento: 300
+  fuerzaLanzamiento: 500
   maxDistance: 4
-  masa: 1.5
+  maxVelocity: 30
 --- !u!61 &8805033984810658569
 BoxCollider2D:
   m_ObjectHideFlags: 0
