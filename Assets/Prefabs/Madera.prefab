@@ -175,9 +175,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4445993761912600916}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: da57d46c748237578ac790adc4e7b242, type: 2}
+  m_Controller: {fileID: 9100000, guid: b40478e50eac07047bab5cd59c6b252f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -201,6 +201,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc48f45290abe37c9274b79e07220ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestructableObject
-  resistanceMedium: {fileID: 3199551586010194799, guid: 9c235950ce94323b0b1f9df8bc305fc1, type: 3}
-  resistanceLow: {fileID: 5195097138562559188, guid: 6e97a50b82a2f991a9a0d895bb1b2dde, type: 3}
   resistance: 15

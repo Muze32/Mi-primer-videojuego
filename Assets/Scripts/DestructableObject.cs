@@ -2,30 +2,27 @@ using UnityEngine;
 
 public class DestructableObject : MonoBehaviour
 {
-    [SerializeField] private Sprite resistanceMedium;
-    [SerializeField] private Sprite resistanceLow;
     [SerializeField] private float resistance;
     private float resistanceIni;
-    private SpriteRenderer spriteR;
     private Animator animator;
+    private enum estadoMovimiento { highRes, midRes, lowRes, destroyed }; //highRes = 0, midRes, lowRes = 2, destroyed = 3
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-        spriteR = GetComponent<SpriteRenderer>();
         resistanceIni = resistance;
-        animator.enabled = false;
     }
     
+    //FIXME: Los bloques sufren daño al comenzar el nivel (hay una pequeña caida al ser colocados de manera ligeramente incorrecta)
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        estadoMovimiento estado = estadoMovimiento.highRes;
         float velColision = collision.relativeVelocity.magnitude;
 
         //Destruye el objeto si la velocidad es mayor a su resistencia
         if (velColision > resistance)
         {
-            animator.enabled = true;
-            animator.SetTrigger("dead");
+            estado = estadoMovimiento.destroyed;
             Destroy(gameObject, .2f);
         }
         else
@@ -34,11 +31,13 @@ public class DestructableObject : MonoBehaviour
             //Cambia los sprites de los objetos segun la resistencia
             if(resistance <= resistanceIni / 3)
             {
-                spriteR.sprite = resistanceLow;
-            } else if(resistance > resistanceIni / 3 && resistance <= resistanceIni * 2/3)
+                estado = estadoMovimiento.midRes;
+            }
+            else if(resistance > resistanceIni / 3 && resistance <= resistanceIni * 2/3)
             {
-                spriteR.sprite = resistanceMedium;
+                estado = estadoMovimiento.lowRes;
             }
         }
+        animator.SetInteger("estado", (int)estado);
     }
 }

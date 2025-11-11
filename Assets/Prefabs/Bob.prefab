@@ -157,6 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LanzarSapo
   fuerzaLanzamiento: 300
   maxDistance: 4
+  masa: 0.5
 --- !u!61 &1347361519120439664
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -195,7 +196,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.68, y: 6.57}
+    oldSize: {x: 16.3125, y: 23.625}
     newSize: {x: 3.68, y: 6.57}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
