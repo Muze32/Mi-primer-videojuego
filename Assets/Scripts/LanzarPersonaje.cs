@@ -76,14 +76,13 @@ public class LanzarPersonaje : MonoBehaviour
 
     private void OnMouseUp()
     {
-        //TODO: cambiar animacion a airAnim
         characterStatus.ChangeStatus("air");
         //Rb.Dynamic para que el objeto responda a las fisicas de unity
         rb.bodyType = RigidbodyType2D.Dynamic;
         Vector2 direccionLanzamiento = startPosition - clampedPosition;
         rb.AddForce(direccionLanzamiento * fuerzaLanzamiento);
         //Se comprueba la logica de manejar el final 2 segs despues del lanzamiento
-        Invoke("llamarManejarFinal", 4f); //TODO: Llamar la funcion despues de que el personaje se haya detenido (como en el juego original) no despues de x segundos
+        Invoke("llamarManejarFinal", 5f); //TODO: Llamar la funcion despues de que el personaje se haya detenido (como en el juego original) no despues de x segundos
     }
 
     private void llamarManejarFinal()

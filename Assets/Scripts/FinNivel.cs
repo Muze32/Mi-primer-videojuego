@@ -23,17 +23,17 @@ public class FinNivel : MonoBehaviour
         if (enemigosRestantes == 0)
         {
             Debug.Log("Felicidades. Nivel completado");
-            Invoke("avanzarNivel", 1f);
+            Invoke("avanzarNivel", .5f);
         }
         else if (personajesRestantes <= 0)
         {
             Debug.Log("No quedan mas personajes. Reiniciando nivel");
-            Invoke("resetPosition", 1f);
+            Invoke("resetPosition", .5f);
         }
         else
         {
             Destroy(personajeActual);
-            Invoke("avanzarTurno", 1f);
+            Invoke("avanzarTurno", .5f);
         }
     }
 
