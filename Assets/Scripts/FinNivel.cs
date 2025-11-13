@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class FinNivel : MonoBehaviour
 {
@@ -34,6 +35,25 @@ public class FinNivel : MonoBehaviour
         {
             Destroy(personajeActual);
             Invoke("avanzarTurno", .5f);
+            InvokeRepeating("CheckearVictoria", 0.5f, 2f);
+        }
+    }
+
+    private void CheckearVictoria()
+    {
+        // Lógica de verificación de victoria (copiada de tu Update())
+        enemigosRestantes = GameObject.FindGameObjectsWithTag("Enemigo").Length;
+
+        if (enemigosRestantes == 0)
+        {
+            Debug.Log("Felicidades. Nivel completado");
+
+            // CRÍTICO: DETENER la repetición del chequeo
+            CancelInvoke("CheckearVictoria");
+
+            // Iniciar el avance de nivel
+            Invoke("avanzarNivel", 1f);
+            this.enabled = false; // Desactiva el script
         }
     }
 
