@@ -5,7 +5,7 @@ public class DestructableObject : MonoBehaviour
     [SerializeField] private float resistance;
     private float resistanceIni;
     private Animator animator;
-    private enum estadoMovimiento { highRes, midRes, lowRes, destroyed }; //highRes = 0, midRes, lowRes = 2, destroyed = 3
+    private enum estadoMovimiento { highRes, midRes, lowRes, destroyed }; //highRes = 0, midRes = 1, lowRes = 2, destroyed = 3
 
     private void Start()
     {

@@ -28,8 +28,8 @@ public class FinNivel : MonoBehaviour
         }
         else if (personajesRestantes <= 0)
         {
-            Debug.Log("No quedan mas personajes. Reiniciando nivel");
-            Invoke("resetPosition", .5f);
+            Destroy(personajeActual);
+            Invoke("esperarTurnoFinal", 5f);
         }
         else
         {
@@ -37,6 +37,20 @@ public class FinNivel : MonoBehaviour
             Invoke("avanzarTurno", .5f);
             InvokeRepeating("CheckearVictoria", 0.5f, 2f);
         }
+    }
+
+    private void esperarTurnoFinal()
+    {
+        enemigosRestantes = GameObject.FindGameObjectsWithTag("Enemigo").Length;
+
+        if (enemigosRestantes == 0)
+        {
+            Debug.Log("Felicidades. Nivel completado");
+            Invoke("avanzarNivel", .5f);
+        }
+
+        Debug.Log("No quedan mas personajes. Reiniciando nivel");
+        Invoke("resetPosition", .5f);
     }
 
     private void CheckearVictoria()
