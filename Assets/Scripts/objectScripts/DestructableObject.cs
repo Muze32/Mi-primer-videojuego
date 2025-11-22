@@ -13,7 +13,6 @@ public class DestructableObject : MonoBehaviour
         resistanceIni = resistance;
     }
     
-    //FIXME: Los bloques sufren daño al comenzar el nivel (hay una pequeña caida al ser colocados de manera ligeramente incorrecta)
     private void OnCollisionEnter2D(Collision2D collision)
     {
         estadoMovimiento estado = estadoMovimiento.highRes;
