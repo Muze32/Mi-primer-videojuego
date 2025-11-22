@@ -6,6 +6,7 @@ public class DestructableObject : MonoBehaviour
     private float resistanceIni;
     private Animator animator;
     private enum estadoMovimiento { highRes, midRes, lowRes, destroyed }; //highRes = 0, midRes = 1, lowRes = 2, destroyed = 3
+    [SerializeField] private AudioSource soundBreak;
 
     private void Start()
     {
@@ -21,8 +22,13 @@ public class DestructableObject : MonoBehaviour
         //Destruye el objeto si la velocidad es mayor a su resistencia
         if (velColision > resistance)
         {
+            if(soundBreak)
+            {
+                soundBreak.Play();
+            }
             estado = estadoMovimiento.destroyed;
-            Destroy(gameObject, .2f);
+            Destroy(gameObject, .5f);
+            animator.SetInteger("estado", (int)estado);
         }
         else
         {
@@ -36,7 +42,7 @@ public class DestructableObject : MonoBehaviour
             {
                 estado = estadoMovimiento.lowRes;
             }
+            animator.SetInteger("estado", (int)estado);
         }
-        animator.SetInteger("estado", (int)estado);
     }
 }

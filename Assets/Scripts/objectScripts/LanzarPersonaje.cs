@@ -90,7 +90,7 @@ public class LanzarPersonaje : MonoBehaviour
     private void OnMouseUp()
     {
         soundManager.playLaunchSounds(characterSound);
-        finNivel.CancelInvoke();
+        finNivel.CancelInvoke("CheckearVictoria");
         characterStatus.ChangeStatus("air");
         //Rb.Dynamic para que el objeto responda a las fisicas de unity
         rb.bodyType = RigidbodyType2D.Dynamic;

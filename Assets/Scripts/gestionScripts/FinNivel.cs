@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class FinNivel : MonoBehaviour
 {
     [SerializeField] private QueueManager queueManager;
     [SerializeField] private CameraFollowing cameraFollowing;
+    [SerializeField] private GameManager gameManager;
     private int personajesRestantes;
     private int enemigosRestantes;
     private GameObject personajeActual;
@@ -17,24 +17,22 @@ public class FinNivel : MonoBehaviour
 
     public void ManejarFinal()
     {
-        //FIXME: Por alguna extraña razon, despues de agregar este script hay un ligero trabon cuando el primer personaje sube a la honda
         enemigosRestantes = GameObject.FindGameObjectsWithTag("Enemigo").Length;
         personajesRestantes = GameObject.FindGameObjectsWithTag("Personaje").Length - 1;
 
         if (enemigosRestantes == 0)
         {
-            Debug.Log("Felicidades. Nivel completado");
-            Invoke("avanzarNivel", .5f);
+            gameManager.showNextLevelScreen();
         }
         else if (personajesRestantes <= 0)
         {
             Destroy(personajeActual);
-            Invoke("esperarTurnoFinal", 5f);
+            Invoke("esperarTurnoFinal", 3f);
         }
         else
         {
             Destroy(personajeActual);
-            Invoke("avanzarTurno", .5f);
+            Invoke("avanzarTurno", 0.5f);
             InvokeRepeating("CheckearVictoria", 0.5f, 2f);
         }
     }
@@ -45,28 +43,26 @@ public class FinNivel : MonoBehaviour
 
         if (enemigosRestantes == 0)
         {
-            Debug.Log("Felicidades. Nivel completado");
-            Invoke("avanzarNivel", .5f);
+            gameManager.showNextLevelScreen();
         }
-
-        Debug.Log("No quedan mas personajes. Reiniciando nivel");
-        Invoke("resetPosition", .5f);
+        else
+        {
+            gameManager.showGameOverScreen();
+        }
     }
 
     private void CheckearVictoria()
     {
-        // Lógica de verificación de victoria (copiada de tu Update())
         enemigosRestantes = GameObject.FindGameObjectsWithTag("Enemigo").Length;
 
         if (enemigosRestantes == 0)
         {
-            Debug.Log("Felicidades. Nivel completado");
-
-            // CRÍTICO: DETENER la repetición del chequeo
+            //Detiene los checkeos
             CancelInvoke("CheckearVictoria");
-
             // Iniciar el avance de nivel
-            Invoke("avanzarNivel", 1f);
+            gameManager.showNextLevelScreen();
+
+            //TODO: comprobar si se puede eliminar la linea de abajo
             this.enabled = false; // Desactiva el script
         }
     }
@@ -75,15 +71,5 @@ public class FinNivel : MonoBehaviour
     {
         cameraFollowing.resetPosition();
         queueManager.ExecuteNextTurn();
-    }
-    
-    private void resetPosition()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    private void avanzarNivel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
