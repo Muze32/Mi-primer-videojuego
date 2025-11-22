@@ -3,8 +3,8 @@ guid: bc6c2816d4c0b18c6b683d69d4813041
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5251916465442562966
-    second: bowser_0
+      213: 7022520054429482256
+    second: Bowser_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bowser_0
+      name: Bowser_0
       rect:
         serializedVersion: 2
         x: 23
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a6c554fecc17d17b0800000000000000
-      internalID: -5251916465442562966
+      spriteID: 01d735858c0057160800000000000000
+      internalID: 7022520054429482256
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bowser_0: -5251916465442562966
+      Bowser_0: 7022520054429482256
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

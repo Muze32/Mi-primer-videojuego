@@ -12,6 +12,12 @@ public class LanzarPersonaje : MonoBehaviour
     private CharacterStatus characterStatus;
     [SerializeField] private float maxVelocity = 50f;
 
+    [Header("Efectos de sonido")]
+    [SerializeField] private AudioSource lanzamientoSfx;
+    [SerializeField] private AudioSource holdHondaSfx;
+    [SerializeField] private AudioSource releaseHondaSfx;
+
+
     //Orden de prioridad: Awake, OnEnable, Start
     private void Awake()
     {
@@ -55,6 +61,18 @@ public class LanzarPersonaje : MonoBehaviour
 
 
 
+
+    private void OnMouseDown()
+    {
+        // Inicia el sonido de hold (mantener)
+        if (holdHondaSfx != null)
+        {
+            // NOTA: Asegúrate de que holdHondaSfx tenga la propiedad Loop marcada en el Inspector
+            // si quieres que suene de forma continua durante el arrastre.
+            holdHondaSfx.Play();
+        }
+    }
+
     private void OnMouseDrag()
     {
         if (main != null)
@@ -76,6 +94,7 @@ public class LanzarPersonaje : MonoBehaviour
 
     private void OnMouseUp()
     {
+        playSounds();
         finNivel.CancelInvoke();
         characterStatus.ChangeStatus("air");
         //Rb.Dynamic para que el objeto responda a las fisicas de unity
@@ -84,6 +103,27 @@ public class LanzarPersonaje : MonoBehaviour
         rb.AddForce(direccionLanzamiento * fuerzaLanzamiento);
         //Se comprueba la logica de manejar el final 3 segs despues del lanzamiento
         Invoke("llamarManejarFinal", 3.5f);
+    }
+
+    private void playSounds()
+    {
+        //Detener el sonido de "hold" antes de lanzar
+        if (holdHondaSfx.isPlaying)
+        {
+            holdHondaSfx.Stop();
+        }
+
+        releaseHondaSfx.Play();
+        Invoke("ReproducirLanzamientoSfx", .5f); 
+    }
+
+    // NUEVO MÉTODO para ser llamado por Invoke()
+    private void ReproducirLanzamientoSfx()
+    {
+        if (lanzamientoSfx != null)
+        {
+            lanzamientoSfx.Play();
+        }
     }
 
     public void llamarManejarFinal()
