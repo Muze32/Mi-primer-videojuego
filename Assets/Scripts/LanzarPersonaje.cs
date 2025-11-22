@@ -77,6 +77,12 @@ public class LanzarPersonaje : MonoBehaviour
                 clampedPosition = startPosition + (dragPosition - startPosition).normalized * maxDistance; //Suma la pos inicial + un vector con tamaño equivalente a maxDistance
             }
             
+            //Limita el arrastre para que unicamente se pueda disparar hacia delante
+            if(dragPosition.x > startPosition.x)
+            {
+                clampedPosition.x = startPosition.x;
+            }
+
             transform.position = clampedPosition;
         }
     }
