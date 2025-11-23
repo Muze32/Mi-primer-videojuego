@@ -6,6 +6,7 @@ public class FinNivel : MonoBehaviour
     [SerializeField] private QueueManager queueManager;
     [SerializeField] private CameraFollowing cameraFollowing;
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private MusicManager musicManager;
     private int personajesRestantes;
     private int enemigosRestantes;
     private GameObject personajeActual;
@@ -22,6 +23,7 @@ public class FinNivel : MonoBehaviour
 
         if (enemigosRestantes == 0)
         {
+            musicManager.PlayNextLevel();
             gameManager.showNextLevelScreen();
         }
         else if (personajesRestantes <= 0)
@@ -43,10 +45,12 @@ public class FinNivel : MonoBehaviour
 
         if (enemigosRestantes == 0)
         {
+            musicManager.PlayNextLevel();
             gameManager.showNextLevelScreen();
         }
         else
         {
+            musicManager.PlayGameOver();
             gameManager.showGameOverScreen();
         }
     }
@@ -60,6 +64,7 @@ public class FinNivel : MonoBehaviour
             //Detiene los checkeos
             CancelInvoke("CheckearVictoria");
             // Iniciar el avance de nivel
+            musicManager.PlayNextLevel();
             gameManager.showNextLevelScreen();
 
             //TODO: comprobar si se puede eliminar la linea de abajo
