@@ -215,3 +215,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestructableObject
   resistance: 20
+  soundBreak: {fileID: 0}
+  scoreValue: 3500

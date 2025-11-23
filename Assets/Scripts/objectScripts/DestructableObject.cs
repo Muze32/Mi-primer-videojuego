@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DestructableObject : MonoBehaviour
 {
@@ -7,6 +8,9 @@ public class DestructableObject : MonoBehaviour
     private Animator animator;
     private enum estadoMovimiento { highRes, midRes, lowRes, destroyed }; //highRes = 0, midRes = 1, lowRes = 2, destroyed = 3
     [SerializeField] private AudioSource soundBreak;
+
+    [Header("Puntuación")]
+    [SerializeField] private int scoreValue = 100;
 
     private void Start()
     {
@@ -22,7 +26,13 @@ public class DestructableObject : MonoBehaviour
         //Destruye el objeto si la velocidad es mayor a su resistencia
         if (velColision > resistance)
         {
-            if(soundBreak)
+
+            if (ScoreManager.instance != null)
+            {
+                ScoreManager.instance.AddScore(scoreValue);
+            }
+
+            if (soundBreak)
             {
                 soundBreak.Play();
             }

@@ -157,9 +157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f67b8267a1de36946998b23ab22d597b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LanzarSapo
-  fuerzaLanzamiento: 850
+  fuerzaLanzamiento: 750
   maxDistance: 4
-  maxVelocity: 33
+  maxVelocity: 35
   soundManager: {fileID: 0}
   characterSound: {fileID: 7794354989567651540}
 --- !u!61 &8805033984810658569

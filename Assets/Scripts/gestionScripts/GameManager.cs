@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject menuPausa;
     [SerializeField] private GameObject menuGameOver;    
     [SerializeField] private GameObject menuNextLevel;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private ScoreManager scoreManager;
 
     private bool juegoPausado = false;
     private bool juegoMuteado = false;
@@ -59,17 +62,22 @@ public class GameManager : MonoBehaviour
     public void showGameOverScreen()
     {
         Debug.Log("Nivel Fallido.");
-        btnPausa.SetActive(false);
-        menuGameOver.SetActive(true);
+        showMenu(menuGameOver);
     }
 
     public void showNextLevelScreen()
     {
         Debug.Log("Felicidades. Nivel completado");
-        btnPausa.SetActive(false);
-        menuNextLevel.SetActive(true);
+        showMenu(menuNextLevel);
     }
 
+    private void showMenu(GameObject menu)
+    {
+        btnPausa.SetActive(false);
+        menu.SetActive(true);
+        scoreText.enabled = false;
+        scoreManager.stopTimer();
+    }
     public void nextLevel()
     {
         Debug.Log("Avanzando al siguiente nivel...");

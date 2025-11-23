@@ -108,7 +108,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1.5
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 2
@@ -157,9 +157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f67b8267a1de36946998b23ab22d597b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LanzarSapo
-  fuerzaLanzamiento: 650
+  fuerzaLanzamiento: 850
   maxDistance: 4
-  maxVelocity: 35
+  maxVelocity: 33
   soundManager: {fileID: 0}
   characterSound: {fileID: 731725183855183403}
 --- !u!61 &8004799808312012906
