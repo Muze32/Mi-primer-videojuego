@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 
 public class LanzarPersonaje : MonoBehaviour
 {
@@ -54,16 +53,23 @@ public class LanzarPersonaje : MonoBehaviour
         }
     }
 
-
-
-
     private void OnMouseDown()
     {
+        if (!ScoreManager.isGameActive)
+        {
+            return; // Bloquea la interacción si el nivel ha terminado.
+        }
+
         soundManager.playHold();
     }
 
     private void OnMouseDrag()
     {
+        if (!ScoreManager.isGameActive)
+        {
+            return; // Bloquea la interacción si el nivel ha terminado.
+        }
+
         if (main != null)
         {
             Vector2 dragPosition = main.ScreenToWorldPoint(Input.mousePosition);
@@ -89,6 +95,11 @@ public class LanzarPersonaje : MonoBehaviour
 
     private void OnMouseUp()
     {
+        if (!ScoreManager.isGameActive)
+        {
+            return; // Bloquea la interacción si el nivel ha terminado.
+        }
+
         soundManager.playLaunchSounds(characterSound);
         finNivel.CancelInvoke("CheckearVictoria");
         characterStatus.ChangeStatus("air");
@@ -104,6 +115,7 @@ public class LanzarPersonaje : MonoBehaviour
     {        
         finNivel.ManejarFinal();
     }
+
     public void actualizarReferencias(Camera cam, FinNivel finalNivel)
     {
         main = cam;

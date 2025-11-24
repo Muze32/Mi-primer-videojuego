@@ -81,6 +81,7 @@ public class GameManager : MonoBehaviour
     public void nextLevel()
     {
         Debug.Log("Avanzando al siguiente nivel...");
+        ScoreManager.isGameActive = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

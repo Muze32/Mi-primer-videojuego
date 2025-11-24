@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
     private int score = 0;
     private float timer;
-    private bool isGameActive = true;
+    public static bool isGameActive = true;
 
     // Referencia al componente de texto de la UI para mostrar la puntuación
     [SerializeField] private TextMeshProUGUI scoreText;
