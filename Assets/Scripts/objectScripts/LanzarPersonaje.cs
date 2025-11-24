@@ -55,7 +55,7 @@ public class LanzarPersonaje : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!ScoreManager.isGameActive)
+        if (!GameManager.isGameActive)
         {
             return; // Bloquea la interacción si el nivel ha terminado.
         }
@@ -65,7 +65,7 @@ public class LanzarPersonaje : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        if (!ScoreManager.isGameActive)
+        if (!GameManager.isGameActive)
         {
             return; // Bloquea la interacción si el nivel ha terminado.
         }
@@ -95,7 +95,7 @@ public class LanzarPersonaje : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (!ScoreManager.isGameActive)
+        if (!GameManager.isGameActive)
         {
             return; // Bloquea la interacción si el nivel ha terminado.
         }

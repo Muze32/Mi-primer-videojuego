@@ -3,14 +3,13 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    // 1. INSTANCIA ESTÁTICA
+    // 1. INSTANCIA ESTï¿½TICA
     // Esto hace que esta instancia de ScoreManager sea accesible globalmente (ej: ScoreManager.instance.AddScore(500);)
     public static ScoreManager instance;
     private int score = 0;
     private float timer;
-    public static bool isGameActive = true;
 
-    // Referencia al componente de texto de la UI para mostrar la puntuación
+    // Referencia al componente de texto de la UI para mostrar la puntuaciï¿½n
     [SerializeField] private TextMeshProUGUI scoreText;
     [Header("Descuento por Tiempo")]
     [SerializeField] private int timePenalty;
@@ -26,7 +25,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Update()
     {
-        if(!isGameActive)
+        if(!GameManager.isGameActive)
         {
             return;
         }
@@ -34,7 +33,7 @@ public class ScoreManager : MonoBehaviour
         // 1. Descuenta el tiempo transcurrido
         timer -= Time.deltaTime;
 
-        // 2. Verifica si el intervalo de penalización ha terminado
+        // 2. Verifica si el intervalo de penalizaciï¿½n ha terminado
         if (timer <= 0)
         {
             ApplyTimePenalty();
@@ -46,7 +45,6 @@ public class ScoreManager : MonoBehaviour
 
     public void stopTimer()
     {
-        isGameActive = false;
         string formattedScore = score.ToString("N0"); // Formato con separadores de miles (ej. 100,000)
         finalScoreText.text = "Final score\n\n" + formattedScore;
     }

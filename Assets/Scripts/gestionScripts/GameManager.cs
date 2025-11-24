@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     private bool juegoPausado = false;
     private bool juegoMuteado = false;
+    public static bool isGameActive = true;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -22,7 +23,7 @@ public class GameManager : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            resetLevel();
         }
     }
     public void TogglePause()
@@ -76,18 +77,21 @@ public class GameManager : MonoBehaviour
         btnPausa.SetActive(false);
         menu.SetActive(true);
         scoreText.enabled = false;
+        isGameActive = false;
         scoreManager.stopTimer();
+
     }
     public void nextLevel()
     {
         Debug.Log("Avanzando al siguiente nivel...");
-        ScoreManager.isGameActive = true;
+        isGameActive = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void resetLevel()
     {
         Debug.Log("Reiniciando nivel...");
+        isGameActive = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

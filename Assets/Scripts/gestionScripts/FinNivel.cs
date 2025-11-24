@@ -66,8 +66,6 @@ public class FinNivel : MonoBehaviour
             // Iniciar el avance de nivel
             musicManager.PlayNextLevel();
             gameManager.showNextLevelScreen();
-
-            //TODO: comprobar si se puede eliminar la linea de abajo
             this.enabled = false; // Desactiva el script
         }
     }
