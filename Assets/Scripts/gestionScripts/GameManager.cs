@@ -23,9 +23,15 @@ public class GameManager : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.R))
         {
+            if(juegoPausado)
+            {
+                juegoPausado = false;
+                Time.timeScale = 1;
+            }
             resetLevel();
         }
     }
+
     public void TogglePause()
     {
         juegoPausado = !juegoPausado; 
