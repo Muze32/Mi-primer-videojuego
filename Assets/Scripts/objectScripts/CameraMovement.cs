@@ -2,30 +2,27 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    // ... (Variables de Movimiento y Zoom) ...
-
+        // --- Configuraci√≥n de Movimiento ---
     [Header("Movimiento")]
-    [SerializeField] private float movementSpeed = 5f;
+    [Tooltip("Velocidad de desplazamiento de la c√°mara.")]
+    public float movementSpeed;
 
-    [Header("LÌmites del Mapa")]
-    // Define las coordenadas m·ximas y mÌnimas del mundo de juego
-    [SerializeField] private float minX = -10f;
-    [SerializeField] private float maxX = 10f;
-    [SerializeField] private float minY = -10f;
-    [SerializeField] private float maxY = 10f;
-
+    // --- Configuraci√≥n de Zoom ---
     [Header("Zoom")]
-    [SerializeField] private float minZoomSize = 2f;
-    // Aseg˙rate de que este valor sea mayor que el Size inicial de tu c·mara (ej. 35f si es 30)
-    [SerializeField] private float maxZoomSize = 35f;
-    [SerializeField] private float zoomSpeed = 5f;
+    [Tooltip("El tama√±o de c√°mara m√°s peque√±o (m√°s zoom).")]
+    public float minZoomSize; 
+    
+    [Tooltip("El tama√±o de c√°mara m√°s grande (menos zoom).")]
+    public float maxZoomSize; 
+    
+    [Tooltip("Rapidez con la que cambia el zoom.")]
+    public float zoomSpeed; 
 
     private Camera mainCamera;
 
     void Start()
     {
         mainCamera = GetComponent<Camera>();
-        // Opcional: Si quieres que la c·mara se centre en el ·rea al inicio, puedes forzar el clamp aquÌ.
     }
 
     void Update()
@@ -36,53 +33,33 @@ public class CameraMovement : MonoBehaviour
 
     private void HandleMovement()
     {
-        // 1. Mover la C·mara
+        // Obtiene la entrada de teclado (WASD, flechas)
         float inputX = Input.GetAxis("Horizontal");
         float inputY = Input.GetAxis("Vertical");
 
+        // Calcula el vector de direcci√≥n y aplica el movimiento
         Vector3 direction = new Vector3(inputX, inputY, 0);
+        
+        // Time.deltaTime garantiza movimiento suave e independiente del framerate
         transform.position += direction * movementSpeed * Time.deltaTime;
-
-        // 2. APLICAR LÕMITES (CLAMPING)
-
-        // El tamaÒo del borde visible de la c·mara en unidades de mundo
-        float cameraHalfHeight = mainCamera.orthographicSize;
-        float cameraHalfWidth = mainCamera.aspect * cameraHalfHeight; // mainCamera.aspect = ancho/alto
-
-        // Limita la posiciÛn X, asegurando que el borde de la c·mara no pase del lÌmite del mapa
-        float clampedX = Mathf.Clamp(
-            transform.position.x,
-            minX + cameraHalfWidth, // Detiene el centro de la c·mara para que el borde izquierdo quede en minX
-            maxX - cameraHalfWidth  // Detiene el centro de la c·mara para que el borde derecho quede en maxX
-        );
-
-        // Limita la posiciÛn Y
-        float clampedY = Mathf.Clamp(
-            transform.position.y,
-            minY + cameraHalfHeight, // Detiene el centro de la c·mara para que el borde inferior quede en minY
-            maxY - cameraHalfHeight  // Detiene el centro de la c·mara para que el borde superior quede en maxY
-        );
-
-        // Aplica la posiciÛn limitada
-        transform.position = new Vector3(clampedX, clampedY, transform.position.z);
     }
 
     private void HandleZoom()
     {
+        // Obtiene la entrada de la rueda del rat√≥n (+ para adelante, - para atr√°s)
         float scrollInput = Input.GetAxis("Mouse ScrollWheel");
 
         if (scrollInput != 0f)
         {
+            // Modifica el tama√±o ortogr√°fico (menos Size = m√°s Zoom)
             mainCamera.orthographicSize -= scrollInput * zoomSpeed;
 
-            // Limita el valor del Size entre el mÌnimo y el m·ximo configurado
+            // Limita el valor del Size entre el m√≠nimo y el m√°ximo configurado
             mainCamera.orthographicSize = Mathf.Clamp(
-                mainCamera.orthographicSize,
-                minZoomSize,
+                mainCamera.orthographicSize, 
+                minZoomSize, 
                 maxZoomSize
             );
-
-            HandleMovement();
         }
     }
 }
