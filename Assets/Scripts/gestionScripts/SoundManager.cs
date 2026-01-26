@@ -7,14 +7,25 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource releaseHondaSfx;
     private AudioSource characterSfx;
 
-    public void playHold()
+    [Header("Musica del nivel")]
+    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioClip bgMusic;
+    [SerializeField] private AudioClip gameOverMusic;
+    [SerializeField] private AudioClip nextLevelMusic;
+
+    private void Start()
+    {
+        ChangeMusic(bgMusic);
+    }
+
+    public void PlayHold()
     {
         if (holdHondaSfx != null)
         {
             holdHondaSfx.Play();
         } 
     }
-    public void playLaunchSounds(AudioSource characterSfx)
+    public void PlayLaunchSound(AudioSource characterSfx)
     {
         this.characterSfx = characterSfx;
         //Detener el sonido de "hold" antes de lanzar
@@ -25,7 +36,6 @@ public class SoundManager : MonoBehaviour
 
         releaseHondaSfx.Play();
         Invoke("ReproducirLanzamientoSfx", .5f); 
-
     }
 
     private void ReproducirLanzamientoSfx()
@@ -34,5 +44,24 @@ public class SoundManager : MonoBehaviour
         {
             characterSfx.Play();
         }
+    }
+
+    private void ChangeMusic(AudioClip newClip)
+    {
+        if (musicSource.clip != newClip)
+        {
+            musicSource.clip = newClip;
+            musicSource.Play();
+        }
+    }
+
+    public void PlayNextLevel()
+    {
+        ChangeMusic(nextLevelMusic);
+    }
+
+    public void PlayGameOver()
+    {
+        ChangeMusic(gameOverMusic);
     }
 }

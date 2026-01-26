@@ -33,7 +33,7 @@ public class ScoreManager : MonoBehaviour
         // 1. Descuenta el tiempo transcurrido
         timer -= Time.deltaTime;
 
-        // 2. Verifica si el intervalo de penalizaci�n ha terminado
+        // 2. Verifica si el intervalo de penalizacion ha terminado
         if (timer <= 0)
         {
             ApplyTimePenalty();
@@ -43,7 +43,7 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    public void stopTimer()
+    public void StopTimer()
     {
         string formattedScore = score.ToString("N0"); // Formato con separadores de miles (ej. 100,000)
         finalScoreText.text = "Final score\n\n" + formattedScore;

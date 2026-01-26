@@ -1,78 +1,100 @@
+using System;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class FinNivel : MonoBehaviour
 {
     [SerializeField] private QueueManager queueManager;
     [SerializeField] private CameraFollowing cameraFollowing;
     [SerializeField] private GameManager gameManager;
-    [SerializeField] private MusicManager musicManager;
-    private int personajesRestantes;
-    private int enemigosRestantes;
+    [SerializeField] private SoundManager soundManager;
     private GameObject personajeActual;
+    private Coroutine victoriaCoroutine;
 
     public void ActualizarPersonaje(GameObject personaje)
     {
         personajeActual = personaje;
     }
 
-    public void ManejarFinal()
+    public IEnumerator ManejarFinal()
     {
-        enemigosRestantes = GameObject.FindGameObjectsWithTag("Enemigo").Length;
-        personajesRestantes = GameObject.FindGameObjectsWithTag("Personaje").Length - 1;
+        Rigidbody2D rb = personajeActual.GetComponent<Rigidbody2D>();
 
-        if (enemigosRestantes == 0)
+        //Espera 1 segundo para que no tome en cuenta el momento del lanzamiento
+        yield return new WaitForSeconds(1f);
+
+        //Espera hasta que el personaje este quieto
+        yield return new WaitUntil(() => rb.linearVelocity.magnitude < 0.01f);
+
+        //Si el personaje esta quieto comprueba los posibles escenarios
+
+        if (NoHayEnemigos())
         {
-            musicManager.PlayNextLevel();
-            gameManager.showNextLevelScreen();
+            AvanzarNivel();
+            yield break;
         }
-        else if (personajesRestantes <= 0)
+
+        Destroy(personajeActual);
+        int personajesRestantes = GameObject.FindGameObjectsWithTag("Personaje").Length;
+
+        if (personajesRestantes <= 0)
         {
-            Destroy(personajeActual);
-            Invoke("esperarTurnoFinal", 3f);
+            yield return new WaitForSeconds(3f);
+            ManejarTurnoFinal();
         }
+
         else
         {
-            Destroy(personajeActual);
-            Invoke("avanzarTurno", 0.5f);
-            InvokeRepeating("CheckearVictoria", 0.5f, 2f);
+            AvanzarTurno();
+            victoriaCoroutine = StartCoroutine(CheckearVictoriaCoroutine());
         }
     }
 
-    private void esperarTurnoFinal()
+    private void ManejarTurnoFinal()
     {
-        enemigosRestantes = GameObject.FindGameObjectsWithTag("Enemigo").Length;
-
-        if (enemigosRestantes == 0)
-        {
-            musicManager.PlayNextLevel();
-            gameManager.showNextLevelScreen();
-        }
+        if (NoHayEnemigos())
+            AvanzarNivel();
+        
         else
-        {
-            musicManager.PlayGameOver();
-            gameManager.showGameOverScreen();
-        }
+            EjecutarGameOver();
     }
-
-    private void CheckearVictoria()
+    private IEnumerator CheckearVictoriaCoroutine()
     {
-        enemigosRestantes = GameObject.FindGameObjectsWithTag("Enemigo").Length;
+        while (GameObject.FindGameObjectsWithTag("Enemigo").Length > 0)
+            yield return new WaitForSeconds(1f);
 
-        if (enemigosRestantes == 0)
+        AvanzarNivel();
+    }
+
+    public void DetenerCheckeo()
+    {
+        if(victoriaCoroutine != null)
         {
-            //Detiene los checkeos
-            CancelInvoke("CheckearVictoria");
-            // Iniciar el avance de nivel
-            musicManager.PlayNextLevel();
-            gameManager.showNextLevelScreen();
-            this.enabled = false; // Desactiva el script
+            StopCoroutine(victoriaCoroutine);
+            victoriaCoroutine = null;
         }
     }
 
-    private void avanzarTurno()
+    private void AvanzarTurno()
     {
         cameraFollowing.resetPosition();
         queueManager.ExecuteNextTurn();
+    }
+
+    private void AvanzarNivel()
+    {
+        soundManager.PlayNextLevel();
+        gameManager.showNextLevelScreen();
+    }
+
+    private void EjecutarGameOver()
+    {
+        soundManager.PlayGameOver();
+        gameManager.showGameOverScreen();
+    }
+
+    private bool NoHayEnemigos()
+    {
+        return GameObject.FindGameObjectsWithTag("Enemigo").Length == 0;
     }
 }

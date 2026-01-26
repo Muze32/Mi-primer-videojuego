@@ -3,17 +3,20 @@ using UnityEngine;
 public class LanzarPersonaje : MonoBehaviour
 {
     private Rigidbody2D rb;
-    [SerializeField] private float fuerzaLanzamiento = 300f;
-    [SerializeField] private float maxDistance;
-    private Camera main;
-    private FinNivel finNivel;
     private Vector2 startPosition, clampedPosition;
     private CharacterStatus characterStatus;
+
+    //Parametros de lanzamiento
+    [SerializeField] private float fuerzaLanzamiento = 300f;
+    [SerializeField] private float maxDistance;
     [SerializeField] private float maxVelocity = 50f;
 
     [Header("Efectos de sonido")]
     [SerializeField] private SoundManager soundManager;
     [SerializeField] private AudioSource characterSound;
+
+    private Camera mainCamera;
+    private FinNivel finNivel;
 
     //Orden de prioridad: Awake, OnEnable, Start
     private void Awake()
@@ -44,11 +47,10 @@ public class LanzarPersonaje : MonoBehaviour
             // Obtener la magnitud (velocidad escalar) actual
             float speed = rb.linearVelocity.magnitude;
 
-            // Si la velocidad supera el límite
+            // Limita la velocidad si supera el limite
             if (speed > maxVelocity)
             {
-                // Limitar la velocidad
-                rb.linearVelocity = rb.linearVelocity.normalized * maxVelocity;
+                rb.linearVelocity = Vector2.ClampMagnitude(rb.linearVelocity, maxVelocity);
             }
         }
     }
@@ -60,7 +62,7 @@ public class LanzarPersonaje : MonoBehaviour
             return; // Bloquea la interacción si el nivel ha terminado.
         }
 
-        soundManager.playHold();
+        soundManager.PlayHold();
     }
 
     private void OnMouseDrag()
@@ -70,9 +72,9 @@ public class LanzarPersonaje : MonoBehaviour
             return; // Bloquea la interacción si el nivel ha terminado.
         }
 
-        if (main != null)
+        if (mainCamera != null)
         {
-            Vector2 dragPosition = main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 dragPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             clampedPosition = dragPosition;
 
             float dragDistance = Vector2.Distance(startPosition, dragPosition);
@@ -80,7 +82,8 @@ public class LanzarPersonaje : MonoBehaviour
             //Limita la distancia de arrastre maxima para los personajes
             if (dragDistance > maxDistance)
             {
-                clampedPosition = startPosition + (dragPosition - startPosition).normalized * maxDistance; //Suma la pos inicial + un vector con tamaño equivalente a maxDistance
+                //Suma la pos inicial + un vector con tamaño equivalente a maxDistance
+                clampedPosition = startPosition + (dragPosition - startPosition).normalized * maxDistance; 
             }
             
             //Limita el arrastre para que unicamente se pueda disparar hacia delante
@@ -100,26 +103,22 @@ public class LanzarPersonaje : MonoBehaviour
             return; // Bloquea la interacción si el nivel ha terminado.
         }
 
-        soundManager.playLaunchSounds(characterSound);
-        finNivel.CancelInvoke("CheckearVictoria");
+        soundManager.PlayLaunchSound(characterSound);
+        finNivel.DetenerCheckeo();
         characterStatus.ChangeStatus("air");
         
         //Rb.Dynamic para que el objeto responda a las fisicas de unity
         rb.bodyType = RigidbodyType2D.Dynamic;
         Vector2 direccionLanzamiento = startPosition - clampedPosition;
-        rb.AddForce(direccionLanzamiento * fuerzaLanzamiento);
-        //Se comprueba la logica de manejar el final 3 segs despues del lanzamiento
-        Invoke("llamarManejarFinal", 3.5f);
+        rb.AddForce(direccionLanzamiento * fuerzaLanzamiento, ForceMode2D.Impulse);
+
+        //Se comprueba la logica para manejar el final de cada turno
+        StartCoroutine(finNivel.ManejarFinal());
     }
 
-    public void llamarManejarFinal()
-    {        
-        finNivel.ManejarFinal();
-    }
-
-    public void actualizarReferencias(Camera cam, FinNivel finalNivel)
+    public void ActualizarReferencias(Camera cam, FinNivel finalNivel)
     {
-        main = cam;
+        mainCamera = cam;
         finNivel = finalNivel;
     }
 }
