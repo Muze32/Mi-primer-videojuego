@@ -101,20 +101,15 @@ public class LanzarPersonaje : MonoBehaviour
         }
 
         soundManager.playLaunchSounds(characterSound);
-        finNivel.CancelInvoke("CheckearVictoria");
+        finNivel.detenerCheckeo();
         characterStatus.ChangeStatus("air");
         
         //Rb.Dynamic para que el objeto responda a las fisicas de unity
         rb.bodyType = RigidbodyType2D.Dynamic;
         Vector2 direccionLanzamiento = startPosition - clampedPosition;
         rb.AddForce(direccionLanzamiento * fuerzaLanzamiento);
-        //Se comprueba la logica de manejar el final 3 segs despues del lanzamiento
-        Invoke("llamarManejarFinal", 3.5f);
-    }
-
-    public void llamarManejarFinal()
-    {        
-        finNivel.ManejarFinal();
+        //Se comprueba la logica para manejar el final de cada turno
+        StartCoroutine(finNivel.ManejarFinal());
     }
 
     public void actualizarReferencias(Camera cam, FinNivel finalNivel)

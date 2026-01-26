@@ -1,5 +1,5 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class FinNivel : MonoBehaviour
 {
@@ -10,36 +10,52 @@ public class FinNivel : MonoBehaviour
     private int personajesRestantes;
     private int enemigosRestantes;
     private GameObject personajeActual;
+    public Rigidbody2D rb;
 
     public void ActualizarPersonaje(GameObject personaje)
     {
         personajeActual = personaje;
     }
 
-    public void ManejarFinal()
+    public IEnumerator ManejarFinal()
     {
+        rb = personajeActual.GetComponent<Rigidbody2D>();
+
+        yield return new WaitForSeconds(1f);
+        //Cada 1 segundo comprueba si velocidad != 0
+        while (rb.linearVelocity.magnitude > 0.01f)
+            yield return new WaitForSeconds(1f);
+
         enemigosRestantes = GameObject.FindGameObjectsWithTag("Enemigo").Length;
         personajesRestantes = GameObject.FindGameObjectsWithTag("Personaje").Length - 1;
+
+        //Si el objeto esta quieto sale de la rutina
 
         if (enemigosRestantes == 0)
         {
             musicManager.PlayNextLevel();
             gameManager.showNextLevelScreen();
+            yield break;
         }
-        else if (personajesRestantes <= 0)
+
+        Destroy(personajeActual);
+
+        if (personajesRestantes <= 0)
         {
-            Destroy(personajeActual);
-            Invoke("esperarTurnoFinal", 3f);
+            yield return new WaitForSeconds(3f);
+            manejarTurnoFinal();
         }
+
         else
         {
-            Destroy(personajeActual);
-            Invoke("avanzarTurno", 0.5f);
+            avanzarTurno();
+            yield return new WaitForSeconds(0.5f);
             InvokeRepeating("CheckearVictoria", 0.5f, 2f);
+            //StartCoroutine(CheckearVictoriaCoroutine());
         }
     }
 
-    private void esperarTurnoFinal()
+    private void manejarTurnoFinal()
     {
         enemigosRestantes = GameObject.FindGameObjectsWithTag("Enemigo").Length;
 
@@ -54,6 +70,19 @@ public class FinNivel : MonoBehaviour
             gameManager.showGameOverScreen();
         }
     }
+    private IEnumerator CheckearVictoriaCoroutine()
+    {
+        while (GameObject.FindGameObjectsWithTag("Enemigo").Length > 0)
+            yield return new WaitForSeconds(2f);
+
+        musicManager.PlayNextLevel();
+        gameManager.showNextLevelScreen();
+    }
+
+    public void detenerCheckeo()
+    {
+        StopCoroutine(CheckearVictoriaCoroutine());
+    }
 
     private void CheckearVictoria()
     {
@@ -66,7 +95,6 @@ public class FinNivel : MonoBehaviour
             // Iniciar el avance de nivel
             musicManager.PlayNextLevel();
             gameManager.showNextLevelScreen();
-            this.enabled = false; // Desactiva el script
         }
     }
 
