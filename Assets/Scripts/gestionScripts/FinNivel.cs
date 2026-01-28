@@ -7,9 +7,8 @@ public class FinNivel : MonoBehaviour
     [SerializeField] private QueueManager queueManager;
     [SerializeField] private CameraFollowing cameraFollowing;
     [SerializeField] private GameManager gameManager;
-    [SerializeField] private MusicManager musicManager;
+    [SerializeField] private SoundManager soundManager;
     private GameObject personajeActual;
-    public Rigidbody2D rb;
     private Coroutine victoriaCoroutine;
 
     public void ActualizarPersonaje(GameObject personaje)
@@ -19,7 +18,7 @@ public class FinNivel : MonoBehaviour
 
     public IEnumerator ManejarFinal()
     {
-        rb = personajeActual.GetComponent<Rigidbody2D>();
+        Rigidbody2D rb = personajeActual.GetComponent<Rigidbody2D>();
 
         //Espera 1 segundo para que no tome en cuenta el momento del lanzamiento
         yield return new WaitForSeconds(1f);
@@ -84,13 +83,13 @@ public class FinNivel : MonoBehaviour
 
     private void AvanzarNivel()
     {
-        musicManager.PlayNextLevel();
+        soundManager.PlayNextLevel();
         gameManager.showNextLevelScreen();
     }
 
     private void EjecutarGameOver()
     {
-        musicManager.PlayGameOver();
+        soundManager.PlayGameOver();
         gameManager.showGameOverScreen();
     }
 

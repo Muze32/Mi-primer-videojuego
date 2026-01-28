@@ -48,7 +48,6 @@ public class GameManager : MonoBehaviour
         menuPausa.SetActive(juegoPausado);
         btnPausa.SetActive(!juegoPausado);
     }
-
     public void ToggleMute()
     {
         juegoMuteado = !juegoMuteado;

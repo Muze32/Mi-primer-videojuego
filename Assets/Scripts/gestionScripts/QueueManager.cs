@@ -5,18 +5,19 @@ using System.Linq; // Necesario para usar el método OrderBy
 
 public class QueueManager : MonoBehaviour
 {
-    [Header("Configuración de animacion")]
-    [SerializeField] private float separationDistance = 1f;
-    [SerializeField] private float alturaMaximaArco = 1.5f; // Altura del salto en el punto medio
-    [SerializeField] private float duracionMovimiento = 0.5f; // Tiempo que tarda en llegar a la honda
-    [SerializeField] private float duracionMovimientoFila = 0.3f;
 
     [Header("Dependencias del sistema (Inyección)")]
     [SerializeField] private Transform puntoDeLanzamiento;
     [SerializeField] private CameraFollowing cameraFollowing;
-    [SerializeField] private Camera main;
+    [SerializeField] private Camera mainCamera;
     [SerializeField] private FinNivel finNivel;
-    [SerializeField] private GameObject personajePrefab;
+
+    //Variables referentes a la animacion de movimiento
+    private float separationDistance = 5f;
+    private float alturaMaximaArco = 1.5f; // Altura del salto en el punto medio
+    private float duracionMovimiento = 0.5f; // Tiempo que tarda en llegar a la honda
+    private float duracionMovimientoFila = 0.3f;
+
     private Queue<GameObject> characterQueue;
     void Start()
     {
@@ -65,15 +66,12 @@ public class QueueManager : MonoBehaviour
         if (lanzarScript != null)
         {
             // Asignación de referencias centrales
-            lanzarScript.actualizarReferencias(main, finNivel);
+            lanzarScript.ActualizarReferencias(mainCamera, finNivel);
         }
     }
 
     private void MoverPersonajeALaHonda(GameObject personaje)
     {
-        // Detiene cualquier movimiento anterior (opcional)
-        StopAllCoroutines();
-
         // Inicia el movimiento en arco
         StartCoroutine(MoverEnArco(personaje, personaje.transform.position, puntoDeLanzamiento.position));
     }
@@ -137,7 +135,6 @@ public class QueueManager : MonoBehaviour
     //Desplaza un personaje hacia la derecha
     private IEnumerator MoverPersonaje(GameObject character, Transform characterTransform, Vector3 end, float duration)
     {
-        //TODO: cambiar animacion a walking
         CharacterStatus characterStatus = character.GetComponent<CharacterStatus>();
         characterStatus.ChangeStatus("walking");
 
