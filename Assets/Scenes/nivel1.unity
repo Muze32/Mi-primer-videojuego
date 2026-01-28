@@ -1364,6 +1364,7 @@ MonoBehaviour:
   cameraFollowing: {fileID: 519420034}
   gameManager: {fileID: 215076772}
   musicManager: {fileID: 1560575076}
+  rb: {fileID: 0}
 --- !u!1001 &489072800
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33347,7 +33348,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Calamardo
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5600775515442342579, guid: 683be901187e968fda2dee007e42ecb1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

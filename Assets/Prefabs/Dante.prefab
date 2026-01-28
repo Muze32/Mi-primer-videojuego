@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1077318730520506548}
   - component: {fileID: 4808307605091887911}
   - component: {fileID: 113847886051701146}
-  - component: {fileID: 32741100108891233}
   - component: {fileID: 5475679251443100416}
   m_Layer: 0
   m_Name: Dante
@@ -190,18 +189,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &32741100108891233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5037314360591497463}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa867754c5ff8d547851471f699782f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyCollision
 --- !u!114 &5475679251443100416
 MonoBehaviour:
   m_ObjectHideFlags: 0

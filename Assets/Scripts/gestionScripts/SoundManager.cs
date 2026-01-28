@@ -7,14 +7,14 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource releaseHondaSfx;
     private AudioSource characterSfx;
 
-    public void playHold()
+    public void PlayHold()
     {
         if (holdHondaSfx != null)
         {
             holdHondaSfx.Play();
         } 
     }
-    public void playLaunchSounds(AudioSource characterSfx)
+    public void PlayLaunchSound(AudioSource characterSfx)
     {
         this.characterSfx = characterSfx;
         //Detener el sonido de "hold" antes de lanzar
@@ -25,7 +25,6 @@ public class SoundManager : MonoBehaviour
 
         releaseHondaSfx.Play();
         Invoke("ReproducirLanzamientoSfx", .5f); 
-
     }
 
     private void ReproducirLanzamientoSfx()

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5305383422351809841}
   - component: {fileID: 6983638634968799979}
   - component: {fileID: 2341745622680003351}
-  - component: {fileID: 3207836625814836243}
   - component: {fileID: 1109052260938894727}
   m_Layer: 0
   m_Name: Bowser
@@ -190,18 +189,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3207836625814836243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2029386784410273645}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa867754c5ff8d547851471f699782f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyCollision
 --- !u!114 &1109052260938894727
 MonoBehaviour:
   m_ObjectHideFlags: 0

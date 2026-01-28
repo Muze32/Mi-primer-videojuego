@@ -42,14 +42,6 @@ public class CameraFollowing : MonoBehaviour
         UpdateLimits();
         HandleMovement();
         HandleZoom();  
-
-        if(shouldFollow && personaje != null)
-        {
-            if (personaje.position.x > transform.position.x && personaje.position.x < tope)
-            {
-                //transform.position = new Vector3(personaje.position.x, transform.position.y, transform.position.z);
-            }
-        }
     }
 
     public void resetPosition()
@@ -67,6 +59,7 @@ public class CameraFollowing : MonoBehaviour
     {
         float s = mainCamera.orthographicSize;
 
+        //Valores obtenidos en base a prueba y error
         minX = 1.4f * s - 26f;
         maxX = -1.4f * s + 69f;
 
@@ -81,6 +74,7 @@ public class CameraFollowing : MonoBehaviour
         float inputY = Input.GetAxis("Vertical");
         float valorX = transform.position.x;
         float valorY = transform.position.y;
+
         // Bloquear eje X si intenta salir
         if (inputX > 0 && valorX >= maxX)
             inputX = 0;
@@ -98,17 +92,7 @@ public class CameraFollowing : MonoBehaviour
         // Time.deltaTime garantiza movimiento suave e independiente del framerate
         transform.position += direction * movementSpeed * Time.deltaTime;
     }
- 
-    private Vector3 GetClampedPosition(Vector3 targetPos)
-    {
-        float halfHeight = mainCamera.orthographicSize;
-        float halfWidth = halfHeight * mainCamera.aspect;
 
-        float clampedX = Mathf.Clamp(targetPos.x, minX + halfWidth, maxX - halfWidth);
-        float clampedY = Mathf.Clamp(targetPos.y, minY + halfHeight, maxY - halfHeight);
-
-        return new Vector3(clampedX, clampedY, targetPos.z);
-    }
     private void HandleZoom()
     {
         // Obtiene la entrada de la rueda del ratón (+ para adelante, - para atrás)

@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
         menu.SetActive(true);
         scoreText.enabled = false;
         isGameActive = false;
-        scoreManager.stopTimer();
+        scoreManager.StopTimer();
 
     }
     public void nextLevel()

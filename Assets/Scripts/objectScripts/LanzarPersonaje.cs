@@ -44,10 +44,9 @@ public class LanzarPersonaje : MonoBehaviour
             // Obtener la magnitud (velocidad escalar) actual
             float speed = rb.linearVelocity.magnitude;
 
-            // Si la velocidad supera el límite
+            // Limita la velocidad si supera el limite
             if (speed > maxVelocity)
             {
-                // Limitar la velocidad
                 rb.linearVelocity = rb.linearVelocity.normalized * maxVelocity;
             }
         }
@@ -60,7 +59,7 @@ public class LanzarPersonaje : MonoBehaviour
             return; // Bloquea la interacción si el nivel ha terminado.
         }
 
-        soundManager.playHold();
+        soundManager.PlayHold();
     }
 
     private void OnMouseDrag()
@@ -80,7 +79,8 @@ public class LanzarPersonaje : MonoBehaviour
             //Limita la distancia de arrastre maxima para los personajes
             if (dragDistance > maxDistance)
             {
-                clampedPosition = startPosition + (dragPosition - startPosition).normalized * maxDistance; //Suma la pos inicial + un vector con tamaño equivalente a maxDistance
+                //Suma la pos inicial + un vector con tamaño equivalente a maxDistance
+                clampedPosition = startPosition + (dragPosition - startPosition).normalized * maxDistance; 
             }
             
             //Limita el arrastre para que unicamente se pueda disparar hacia delante
@@ -100,8 +100,8 @@ public class LanzarPersonaje : MonoBehaviour
             return; // Bloquea la interacción si el nivel ha terminado.
         }
 
-        soundManager.playLaunchSounds(characterSound);
-        finNivel.detenerCheckeo();
+        soundManager.PlayLaunchSound(characterSound);
+        finNivel.DetenerCheckeo();
         characterStatus.ChangeStatus("air");
         
         //Rb.Dynamic para que el objeto responda a las fisicas de unity
