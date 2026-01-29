@@ -149,7 +149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterQueueManager
   puntoDeLanzamiento: {fileID: 1861428115}
-  cameraFollowing: {fileID: 519420034}
   mainCamera: {fileID: 519420031}
   finNivel: {fileID: 430298216}
 --- !u!4 &11838371
@@ -1458,7 +1457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FinNivel
   queueManager: {fileID: 11838370}
-  cameraFollowing: {fileID: 519420034}
+  cameraMovement: {fileID: 519420034}
   gameManager: {fileID: 215076772}
   soundManager: {fileID: 394635535}
 --- !u!1001 &489072800
@@ -1796,7 +1795,6 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420034}
-  - component: {fileID: 519420035}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1891,30 +1889,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollowing
   tope: 40
-  minX: 0
-  maxX: 0
-  minY: 0
-  maxY: 0
   movementSpeed: 15
   minZoomSize: 5
   maxZoomSize: 20
   zoomSpeed: 15
---- !u!114 &519420035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48c341e3bcbe9954087f7330b40c1be8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraMovement
-  movementSpeed: 25
-  minZoomSize: 8
-  maxZoomSize: 32
-  zoomSpeed: 10
 --- !u!1 &534984104
 GameObject:
   m_ObjectHideFlags: 0

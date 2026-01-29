@@ -8,7 +8,6 @@ public class QueueManager : MonoBehaviour
 
     [Header("Dependencias del sistema (Inyección)")]
     [SerializeField] private Transform puntoDeLanzamiento;
-    [SerializeField] private CameraFollowing cameraFollowing;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private FinNivel finNivel;
 
@@ -54,19 +53,18 @@ public class QueueManager : MonoBehaviour
     //Actualiza la referencia para la camara y el script FinNivel
     private void ActualizarReferencias(GameObject character)
     {
-        cameraFollowing.actualizarPersonaje(character);
         finNivel.ActualizarPersonaje(character);
     }
 
     //Asigna dependencias necesarias para el correcto funcionamiento de LanzarPersonaje
     private void InjectDependencies(GameObject character)
     {
-        LanzarPersonaje lanzarScript = character.GetComponent<LanzarPersonaje>();
+        LanzarPersonaje lanzarPersonaje = character.GetComponent<LanzarPersonaje>();
 
-        if (lanzarScript != null)
+        if (lanzarPersonaje != null)
         {
             // Asignación de referencias centrales
-            lanzarScript.ActualizarReferencias(mainCamera, finNivel);
+            lanzarPersonaje.ActualizarReferencias(mainCamera, finNivel);
         }
     }
 
@@ -109,11 +107,11 @@ public class QueueManager : MonoBehaviour
         // Asegura que aterrice exactamente en el punto final
         personaje.transform.position = end;
 
-        LanzarPersonaje lanzarScript = personaje.GetComponent<LanzarPersonaje>();
-        if (lanzarScript != null)
+        LanzarPersonaje lanzarPersonaje = personaje.GetComponent<LanzarPersonaje>();
+        if (lanzarPersonaje != null)
         {
             // Esto le da el control al jugador, permitiendo OnMouseDrag y OnMouseUp.
-            lanzarScript.enabled = true;
+            lanzarPersonaje.enabled = true;
         }
     }
 

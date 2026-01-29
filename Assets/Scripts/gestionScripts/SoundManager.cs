@@ -17,14 +17,9 @@ public class SoundManager : MonoBehaviour
     private void Awake()
     {
         if (Instance == null)
-        {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // opcional
-        }
         else
-        {
             Destroy(gameObject);
-        }
     }
 
     private void Start()
@@ -35,18 +30,15 @@ public class SoundManager : MonoBehaviour
     public void PlayHold()
     {
         if (holdHondaSfx != null)
-        {
             holdHondaSfx.Play();
-        } 
     }
+
     public void PlayLaunchSound(AudioSource characterSfx)
     {
         this.characterSfx = characterSfx;
         //Detener el sonido de "hold" antes de lanzar
         if (holdHondaSfx.isPlaying)
-        {
             holdHondaSfx.Stop();
-        }
 
         releaseHondaSfx.Play();
         Invoke("ReproducirLanzamientoSfx", .5f); 
@@ -55,9 +47,7 @@ public class SoundManager : MonoBehaviour
     private void ReproducirLanzamientoSfx()
     {
         if (characterSfx != null)
-        {
             characterSfx.Play();
-        }
     }
 
     private void ChangeMusic(AudioClip newClip)

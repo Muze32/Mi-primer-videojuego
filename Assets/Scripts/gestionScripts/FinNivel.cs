@@ -5,7 +5,7 @@ using UnityEngine;
 public class FinNivel : MonoBehaviour
 {
     [SerializeField] private QueueManager queueManager;
-    [SerializeField] private CameraFollowing cameraFollowing;
+    [SerializeField] private CameraMovement cameraMovement;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private SoundManager soundManager;
     private GameObject personajeActual;
@@ -34,8 +34,7 @@ public class FinNivel : MonoBehaviour
             yield break;
         }
 
-        Destroy(personajeActual);
-        int personajesRestantes = GameObject.FindGameObjectsWithTag("Personaje").Length;
+        int personajesRestantes = GameObject.FindGameObjectsWithTag("Personaje").Length - 1;
 
         if (personajesRestantes <= 0)
         {
@@ -45,6 +44,7 @@ public class FinNivel : MonoBehaviour
 
         else
         {
+            Destroy(personajeActual);
             AvanzarTurno();
             victoriaCoroutine = StartCoroutine(CheckearVictoriaCoroutine());
         }
@@ -52,6 +52,8 @@ public class FinNivel : MonoBehaviour
 
     private void ManejarTurnoFinal()
     {
+        Destroy(personajeActual);
+
         if (NoHayEnemigos())
             AvanzarNivel();
         
@@ -77,7 +79,7 @@ public class FinNivel : MonoBehaviour
 
     private void AvanzarTurno()
     {
-        cameraFollowing.resetPosition();
+        cameraMovement.ResetPosition();
         queueManager.ExecuteNextTurn();
     }
 

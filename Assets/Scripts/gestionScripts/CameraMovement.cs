@@ -2,33 +2,61 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-        // --- Configuración de Movimiento ---
+    [SerializeField] private float tope;
+    private Vector3 posicionInicial;
+
+    private float minX;
+    private float maxX;
+    private float minY;
+    private float maxY;
+
+    // --- Configuración de Movimiento ---
     [Header("Movimiento")]
     [Tooltip("Velocidad de desplazamiento de la cámara.")]
-    public float movementSpeed;
+    [SerializeField] private float movementSpeed;
 
     // --- Configuración de Zoom ---
     [Header("Zoom")]
     [Tooltip("El tamaño de cámara más pequeño (más zoom).")]
-    public float minZoomSize; 
+    [SerializeField] private float minZoomSize; 
     
     [Tooltip("El tamaño de cámara más grande (menos zoom).")]
-    public float maxZoomSize; 
+    [SerializeField] private float maxZoomSize; 
     
     [Tooltip("Rapidez con la que cambia el zoom.")]
-    public float zoomSpeed; 
+    [SerializeField] private float zoomSpeed; 
 
     private Camera mainCamera;
 
-    void Start()
+
+    private void Start()
     {
         mainCamera = GetComponent<Camera>();
+        posicionInicial = transform.position;
     }
 
-    void Update()
+    private void Update()
     {
+        UpdateLimits();
         HandleMovement();
-        HandleZoom();
+        HandleZoom();  
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = posicionInicial;
+    }
+
+    private void UpdateLimits()
+    {
+        float s = mainCamera.orthographicSize;
+
+        //Valores obtenidos en base a prueba y error
+        minX = 1.4f * s - 26f;
+        maxX = -1.4f * s + 69f;
+
+        minY = 1.2f * s - 22f;
+        maxY = -1.2f * s + 58f;
     }
 
     private void HandleMovement()
@@ -36,10 +64,23 @@ public class CameraMovement : MonoBehaviour
         // Obtiene la entrada de teclado (WASD, flechas)
         float inputX = Input.GetAxis("Horizontal");
         float inputY = Input.GetAxis("Vertical");
+        float valorX = transform.position.x;
+        float valorY = transform.position.y;
 
-        // Calcula el vector de dirección y aplica el movimiento
+        // Bloquear eje X si intenta salir
+        if (inputX > 0 && valorX >= maxX)
+            inputX = 0;
+        else if (inputX < 0 && valorX <= minX)
+            inputX = 0;
+
+        // Bloquear eje Y si intenta salir
+        if (inputY > 0 && valorY >= maxY)
+            inputY = 0;
+        else if (inputY < 0 && valorY <= minY)
+            inputY = 0;
+
         Vector3 direction = new Vector3(inputX, inputY, 0);
-        
+
         // Time.deltaTime garantiza movimiento suave e independiente del framerate
         transform.position += direction * movementSpeed * Time.deltaTime;
     }
