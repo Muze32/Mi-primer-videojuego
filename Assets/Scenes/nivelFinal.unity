@@ -148,15 +148,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6f364c9261eab8d6898a9475874a4dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterQueueManager
-  separationDistance: 5
-  alturaMaximaArco: 1.5
-  duracionMovimiento: 0.5
-  duracionMovimientoFila: 0.3
   puntoDeLanzamiento: {fileID: 1861428115}
   cameraFollowing: {fileID: 519420034}
-  main: {fileID: 519420031}
+  mainCamera: {fileID: 519420031}
   finNivel: {fileID: 430298216}
-  personajePrefab: {fileID: 904120993041536230, guid: 9887a72103a25fd348fbf96da22c2e7a, type: 3}
 --- !u!4 &11838371
 Transform:
   m_ObjectHideFlags: 0
