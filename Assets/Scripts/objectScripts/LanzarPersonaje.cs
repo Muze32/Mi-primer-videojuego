@@ -17,6 +17,7 @@ public class LanzarPersonaje : MonoBehaviour
     private Camera mainCamera;
     private FinNivel finNivel;
     private SoundManager soundManager;
+    private CameraMovement cameraMovement;
 
     //Orden de prioridad: Awake, OnEnable, Start
     private void Awake()
@@ -104,6 +105,7 @@ public class LanzarPersonaje : MonoBehaviour
             return; // Bloquea la interacción si el nivel ha terminado.
         }
 
+        cameraMovement.StartFollow(transform);
         soundManager.PlayLaunchSound(characterSound);
         finNivel.DetenerCheckeo();
         characterStatus.ChangeStatus("air");
@@ -117,10 +119,11 @@ public class LanzarPersonaje : MonoBehaviour
         StartCoroutine(finNivel.ManejarFinal());
     }
 
-    public void ActualizarReferencias(Camera cam, FinNivel finalNivel)
+    public void ActualizarReferencias(Camera mainCamera, FinNivel finNivel, CameraMovement cameraMovement)
     {
         soundManager = SoundManager.Instance;
-        mainCamera = cam;
-        finNivel = finalNivel;
+        this.mainCamera = mainCamera;
+        this.finNivel = finNivel;
+        this.cameraMovement = cameraMovement;
     }
 }

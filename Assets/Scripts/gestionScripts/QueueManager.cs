@@ -5,10 +5,10 @@ using System.Linq; // Necesario para usar el método OrderBy
 
 public class QueueManager : MonoBehaviour
 {
-
     [Header("Dependencias del sistema (Inyección)")]
     [SerializeField] private Transform puntoDeLanzamiento;
     [SerializeField] private Camera mainCamera;
+    [SerializeField] private CameraMovement cameraMovement;
     [SerializeField] private FinNivel finNivel;
 
     //Variables referentes a la animacion de movimiento
@@ -20,11 +20,11 @@ public class QueueManager : MonoBehaviour
     private Queue<GameObject> characterQueue;
     void Start()
     {
-        createQueue();
+        CreateQueue();
         ExecuteNextTurn();
     }
 
-    private void createQueue()
+    private void CreateQueue()
     {
         GameObject[] allCharacters = GameObject.FindGameObjectsWithTag("Personaje");
         //Ordena la lista en base a posicion x de los personajes
@@ -41,19 +41,13 @@ public class QueueManager : MonoBehaviour
             //Agrega elementos necesarios para el personaje
             InjectDependencies(firstCharacter);
             MoverPersonajeALaHonda(firstCharacter);
-            ActualizarReferencias(firstCharacter);
+            finNivel.ActualizarPersonaje(firstCharacter);
         }
         //Maneja el resto de elementos de la cola
         if (characterQueue.Count > 0)
         {
             AvanzarFilaVisualmente();
         }
-    }
-
-    //Actualiza la referencia para la camara y el script FinNivel
-    private void ActualizarReferencias(GameObject character)
-    {
-        finNivel.ActualizarPersonaje(character);
     }
 
     //Asigna dependencias necesarias para el correcto funcionamiento de LanzarPersonaje
@@ -64,7 +58,7 @@ public class QueueManager : MonoBehaviour
         if (lanzarPersonaje != null)
         {
             // Asignación de referencias centrales
-            lanzarPersonaje.ActualizarReferencias(mainCamera, finNivel);
+            lanzarPersonaje.ActualizarReferencias(mainCamera, finNivel, cameraMovement);
         }
     }
 
