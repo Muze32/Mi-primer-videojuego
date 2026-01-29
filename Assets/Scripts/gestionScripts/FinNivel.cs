@@ -10,7 +10,7 @@ public class FinNivel : MonoBehaviour
     [SerializeField] private SoundManager soundManager;
     private GameObject personajeActual;
     private Coroutine victoriaCoroutine;
-
+    
     public void ActualizarPersonaje(GameObject personaje)
     {
         personajeActual = personaje;

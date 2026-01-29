@@ -12,16 +12,17 @@ public class LanzarPersonaje : MonoBehaviour
     [SerializeField] private float maxVelocity = 50f;
 
     [Header("Efectos de sonido")]
-    [SerializeField] private SoundManager soundManager;
     [SerializeField] private AudioSource characterSound;
 
     private Camera mainCamera;
     private FinNivel finNivel;
+    private SoundManager soundManager;
 
     //Orden de prioridad: Awake, OnEnable, Start
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+
     }
     private void OnEnable()
     {
@@ -118,6 +119,7 @@ public class LanzarPersonaje : MonoBehaviour
 
     public void ActualizarReferencias(Camera cam, FinNivel finalNivel)
     {
+        soundManager = SoundManager.Instance;
         mainCamera = cam;
         finNivel = finalNivel;
     }

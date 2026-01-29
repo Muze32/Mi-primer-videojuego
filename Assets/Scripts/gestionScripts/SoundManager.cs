@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
+    public static SoundManager Instance;
     [Header("Efectos de sonido")]
     [SerializeField] private AudioSource holdHondaSfx;
     [SerializeField] private AudioSource releaseHondaSfx;
@@ -12,6 +13,19 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip bgMusic;
     [SerializeField] private AudioClip gameOverMusic;
     [SerializeField] private AudioClip nextLevelMusic;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // opcional
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
