@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class cBallPower : MonoBehaviour
+public class CBallPower : MonoBehaviour
 {
     [SerializeField] private float factorGravedad = 3f; // Multiplicador de la gravedad (ej: 3x más pesado)
     [SerializeField] private float factorMasa = 2f;      // Multiplicador de la masa (ej: 2x más masa)
@@ -13,13 +13,11 @@ public class cBallPower : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    //FIXME: al hacer click en el personaje el personaje vuelve a una posicion anterior. 
-    //Por otra parte, intentar arreglar el codigo para que detecte el click en toda la pantalla y no unicamente en el personaje.
-    private void OnMouseDown()
-    {
-        // Solo se puede usar una vez y si está en el aire (Dynamic)
-        if (rb.bodyType == RigidbodyType2D.Dynamic && this.enabled == true)
+    private void Update()
+    { 
+        if (Input.GetMouseButtonDown(0) && rb.bodyType == RigidbodyType2D.Dynamic && this.enabled == true)
         {
+            Debug.Log("click");
             ActivarSuperPeso();
             // Deshabilita el script para evitar que se use de nuevo
             this.enabled = false;

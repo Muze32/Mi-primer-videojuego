@@ -4,8 +4,9 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
     [Header("Efectos de sonido")]
-    [SerializeField] private AudioSource holdHondaSfx;
-    [SerializeField] private AudioSource releaseHondaSfx;
+    [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioClip holdHondaSFX;
+    [SerializeField] private AudioClip releaseHondaSFX;
     private AudioSource characterSfx;
 
     [Header("Musica del nivel")]
@@ -29,24 +30,26 @@ public class SoundManager : MonoBehaviour
 
     public void PlayHold()
     {
-        if (holdHondaSfx != null)
-            holdHondaSfx.Play();
+        if (holdHondaSFX) {
+            sfxSource.clip = holdHondaSFX;
+            sfxSource.Play();
+        }
     }
 
     public void PlayLaunchSound(AudioSource characterSfx)
     {
         this.characterSfx = characterSfx;
-        //Detener el sonido de "hold" antes de lanzar
-        if (holdHondaSfx.isPlaying)
-            holdHondaSfx.Stop();
 
-        releaseHondaSfx.Play();
+        sfxSource.Stop();
+        sfxSource.clip = releaseHondaSFX;
+        sfxSource.Play();
+
         Invoke("ReproducirLanzamientoSfx", .5f); 
     }
 
     private void ReproducirLanzamientoSfx()
     {
-        if (characterSfx != null)
+        if (characterSfx)
             characterSfx.Play();
     }
 
