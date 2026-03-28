@@ -15,7 +15,7 @@ public class CBallPower : MonoBehaviour
 
     private void Update()
     { 
-        if (Input.GetMouseButtonDown(0) && rb.bodyType == RigidbodyType2D.Dynamic && this.enabled == true)
+        if (Input.GetMouseButtonDown(0) && rb.bodyType == RigidbodyType2D.Dynamic)
         {
             Debug.Log("click");
             ActivarSuperPeso();
