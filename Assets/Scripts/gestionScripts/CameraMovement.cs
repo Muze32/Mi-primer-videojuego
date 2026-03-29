@@ -24,6 +24,7 @@ public class CameraMovement : MonoBehaviour
     private float minX, maxX, minY, maxY;
     private bool shouldFollow = false, isResetting = false;
     private Transform charTransform;
+    [SerializeField] LanzarPersonaje lanzarPersonaje;
 
     private void Start()
     {
@@ -130,4 +131,6 @@ public class CameraMovement : MonoBehaviour
         transform.position = destino;
         isResetting = false;
     }
+
+    private void OnEnable() lanzarPersonaje.OnLaunch += StartFollow(transform);
 }

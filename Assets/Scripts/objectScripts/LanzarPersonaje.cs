@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class LanzarPersonaje : MonoBehaviour
@@ -10,6 +11,7 @@ public class LanzarPersonaje : MonoBehaviour
     [SerializeField] private float fuerzaLanzamiento = 300f;
     [SerializeField] private float maxDistance;
     [SerializeField] private float maxVelocity = 50f;
+    public event Action OnLaunch;
 
     [Header("Efectos de sonido")]
     [SerializeField] private AudioSource characterSound;
@@ -104,6 +106,8 @@ public class LanzarPersonaje : MonoBehaviour
         {
             return; // Bloquea la interacción si el nivel ha terminado.
         }
+
+        OnLaunch?.Invoke();
 
         cameraMovement.StartFollow(transform);
         soundManager.PlayLaunchSound(characterSound);

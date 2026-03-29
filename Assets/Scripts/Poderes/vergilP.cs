@@ -49,6 +49,12 @@ public class VergilP : MonoBehaviour
         {
             if (hit.gameObject == this.gameObject) continue;
 
+            // Verificar si está en el semicírculo frontal
+            Vector2 toHit = (hit.transform.position - transform.position).normalized;
+            float angle = Vector2.Angle(direction, toHit);
+
+            if (angle > 90f) continue; // ignorar lo que esté detrás
+
             Rigidbody2D hitRb = hit.GetComponent<Rigidbody2D>();
             if (hitRb != null)
             {
@@ -57,12 +63,9 @@ public class VergilP : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
-        if (rb == null) return;
-        Vector2 direction = rb.linearVelocity.normalized;
-        Vector2 slashOrigin = (Vector2)transform.position + direction * (slashRadius * 0.5f);
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(slashOrigin, slashRadius);
+        Gizmos.DrawWireSphere(transform.position, slashRadius);
     }
 }
