@@ -8,7 +8,6 @@ public class QueueManager : MonoBehaviour
     [Header("Dependencias del sistema (Inyección)")]
     [SerializeField] private Transform puntoDeLanzamiento;
     [SerializeField] private Camera mainCamera;
-    [SerializeField] private CameraMovement cameraMovement;
     [SerializeField] private FinNivel finNivel;
 
     //Variables referentes a la animacion de movimiento
@@ -54,12 +53,10 @@ public class QueueManager : MonoBehaviour
     private void InjectDependencies(GameObject character)
     {
         LanzarPersonaje lanzarPersonaje = character.GetComponent<LanzarPersonaje>();
+        if (!lanzarPersonaje) return;
 
-        if (lanzarPersonaje != null)
-        {
-            // Asignación de referencias centrales
-            lanzarPersonaje.ActualizarReferencias(mainCamera, finNivel, cameraMovement);
-        }
+        // Asignación de referencias centrales
+        lanzarPersonaje.UpdateCamera(mainCamera);
     }
 
     private void MoverPersonajeALaHonda(GameObject personaje)

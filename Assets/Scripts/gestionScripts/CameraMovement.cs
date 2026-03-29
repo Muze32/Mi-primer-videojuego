@@ -43,18 +43,23 @@ public class CameraMovement : MonoBehaviour
     //Sigue al personaje durante el vuelo
     private void LateUpdate()
     {
-        if (!shouldFollow || isResetting || charTransform == null)
-            return;
+        if (!shouldFollow || isResetting || !charTransform) return;
 
         if (charTransform.position.x > transform.position.x && transform.position.x < maxX)
+        {
             transform.position = new Vector3(charTransform.position.x, transform.position.y, transform.position.z);
+        }
     }
 
-    public void StartFollow(Transform charTransform)
+    private void OnEnable() => GameEvents.OnLaunch += StartFollow;
+    private void OnDisable() => GameEvents.OnLaunch -= StartFollow;
+
+    public void StartFollow(GameObject obj)
     {
-        this.charTransform = charTransform;
+        this.charTransform = obj.transform;
         shouldFollow = true;
     }
+
 
     //Actualiza los limites de la camara en base al zoom de esta
     private void UpdateLimits()
@@ -72,8 +77,7 @@ public class CameraMovement : MonoBehaviour
     //Maneja el movimiento de la camara segun el teclado
     private void HandleMovement()
     {
-        if (shouldFollow || isResetting)
-            return;
+        if (shouldFollow || isResetting) return;
 
         float inputX = Input.GetAxis("Horizontal");
         float inputY = Input.GetAxis("Vertical");
@@ -93,18 +97,17 @@ public class CameraMovement : MonoBehaviour
         // Obtiene la entrada de la rueda del ratón (+ para adelante, - para atrás)
         float scrollInput = Input.GetAxis("Mouse ScrollWheel");
 
-        if (scrollInput != 0f)
-        {
-            // Modifica el tamaño ortográfico (menos Size = más Zoom)
-            mainCamera.orthographicSize -= scrollInput * zoomSpeed;
+        if (scrollInput == 0f) return;
 
-            // Limita el valor del Size entre el mínimo y el máximo configurado
-            mainCamera.orthographicSize = Mathf.Clamp(
-                mainCamera.orthographicSize,
-                minZoomSize,
-                maxZoomSize
-            );
-        }
+        // Modifica el tamaño ortográfico (menos Size = más Zoom)
+        mainCamera.orthographicSize -= scrollInput * zoomSpeed;
+
+        // Limita el valor del Size entre el mínimo y el máximo configurado
+        mainCamera.orthographicSize = Mathf.Clamp(
+            mainCamera.orthographicSize,
+            minZoomSize,
+            maxZoomSize
+        );
     }
 
     public void ResetPosition()
@@ -132,5 +135,4 @@ public class CameraMovement : MonoBehaviour
         isResetting = false;
     }
 
-    private void OnEnable() lanzarPersonaje.OnLaunch += StartFollow(transform);
 }

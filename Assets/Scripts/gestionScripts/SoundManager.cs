@@ -7,21 +7,13 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioClip holdHondaSFX;
     [SerializeField] private AudioClip releaseHondaSFX;
-    private AudioSource characterSfx;
+    private AudioClip characterSfx;
 
     [Header("Musica del nivel")]
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioClip bgMusic;
     [SerializeField] private AudioClip gameOverMusic;
     [SerializeField] private AudioClip nextLevelMusic;
-
-    private void Awake()
-    {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(gameObject);
-    }
 
     private void Start()
     {
@@ -30,36 +22,40 @@ public class SoundManager : MonoBehaviour
 
     public void PlayHold()
     {
-        if (holdHondaSFX) {
-            sfxSource.clip = holdHondaSFX;
-            sfxSource.Play();
-        }
+        if (!holdHondaSFX) return;
+
+        sfxSource.clip = holdHondaSFX;
+        sfxSource.Play();
     }
 
-    public void PlayLaunchSound(AudioSource characterSfx)
+    private void OnEnable() { 
+        GameEvents.OnLaunch += PlayLaunchSound;
+        GameEvents.OnHold += PlayHold;
+    }
+
+    private void OnDisable()
     {
-        this.characterSfx = characterSfx;
+        GameEvents.OnLaunch -= PlayLaunchSound;
+        GameEvents.OnHold -= PlayHold;
+    }
+
+    private void PlayLaunchSound(GameObject obj)
+    {
+        this.characterSfx = obj.GetComponent<LanzarPersonaje>().LaunchSound;
 
         sfxSource.Stop();
         sfxSource.clip = releaseHondaSFX;
         sfxSource.Play();
 
-        Invoke("ReproducirLanzamientoSfx", .5f); 
-    }
-
-    private void ReproducirLanzamientoSfx()
-    {
-        if (characterSfx)
-            characterSfx.Play();
+        sfxSource.PlayOneShot(characterSfx);
     }
 
     private void ChangeMusic(AudioClip newClip)
     {
-        if (musicSource.clip != newClip)
-        {
-            musicSource.clip = newClip;
-            musicSource.Play();
-        }
+        if (musicSource.clip == newClip) return;
+
+        musicSource.clip = newClip;
+        musicSource.Play();
     }
 
     public void PlayNextLevel()

@@ -25,11 +25,8 @@ public class ScoreManager : MonoBehaviour
 
     private void Update()
     {
-        if(!GameManager.isGameActive)
-        {
-            return;
-        }
-
+        if(!GameManager.isGameActive) return;
+        
         // 1. Descuenta el tiempo transcurrido
         timer -= Time.deltaTime;
 
@@ -65,9 +62,8 @@ public class ScoreManager : MonoBehaviour
 
     private void UpdateScoreDisplay()
     {
-        if (scoreText != null)
-        {
-            scoreText.text = "Score: " + score.ToString();
-        }
+        if (!scoreText) return;
+        
+        scoreText.text = "Score: " + score.ToString();  
     }
 }

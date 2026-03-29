@@ -10,13 +10,24 @@ public class FinNivel : MonoBehaviour
     [SerializeField] private SoundManager soundManager;
     private GameObject personajeActual;
     private Coroutine victoriaCoroutine;
-    
-    public void ActualizarPersonaje(GameObject personaje)
+
+    private void OnEnable() => GameEvents.OnLaunch += OnLaunch;
+    private void OnDisable() => GameEvents.OnLaunch -= OnLaunch;
+
+    private void OnLaunch(GameObject _)
     {
-        personajeActual = personaje;
+        DetenerCheckeo();
+        StartCoroutine(ManejarFinal());
     }
 
-    public IEnumerator ManejarFinal()
+    private void DetenerCheckeo()
+    {
+        if (victoriaCoroutine == null) return;
+
+        StopCoroutine(victoriaCoroutine);
+        victoriaCoroutine = null;
+    }
+    private IEnumerator ManejarFinal()
     {
         Rigidbody2D rb = personajeActual.GetComponent<Rigidbody2D>();
 
@@ -56,25 +67,16 @@ public class FinNivel : MonoBehaviour
 
         if (NoHayEnemigos())
             AvanzarNivel();
-        
         else
             EjecutarGameOver();
     }
+
     private IEnumerator CheckearVictoriaCoroutine()
     {
         while (GameObject.FindGameObjectsWithTag("Enemigo").Length > 0)
             yield return new WaitForSeconds(1f);
 
         AvanzarNivel();
-    }
-
-    public void DetenerCheckeo()
-    {
-        if(victoriaCoroutine != null)
-        {
-            StopCoroutine(victoriaCoroutine);
-            victoriaCoroutine = null;
-        }
     }
 
     private void AvanzarTurno()
@@ -98,5 +100,10 @@ public class FinNivel : MonoBehaviour
     private bool NoHayEnemigos()
     {
         return GameObject.FindGameObjectsWithTag("Enemigo").Length == 0;
+    }
+
+    public void ActualizarPersonaje(GameObject personaje)
+    {
+        personajeActual = personaje;
     }
 }

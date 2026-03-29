@@ -25,8 +25,7 @@ public class DestructableObject : MonoBehaviour
         //Destruye el objeto si la velocidad es mayor a su resistencia
         if (velColision > resistance)
         {
-
-            if (ScoreManager.instance != null)
+            if (ScoreManager.instance)
             {
                 ScoreManager.instance.AddScore(scoreValue);
             }
@@ -35,6 +34,7 @@ public class DestructableObject : MonoBehaviour
             {
                 soundBreak.Play();
             }
+
             estado = estadoMovimiento.destroyed;
             Destroy(gameObject, .5f);
             animator.SetInteger("estado", (int)estado);
@@ -43,11 +43,11 @@ public class DestructableObject : MonoBehaviour
         {
             resistance -= velColision;
             //Cambia los sprites de los objetos segun la resistencia
-            if(resistance <= resistanceIni / 3)
+            if (resistance <= resistanceIni / 3)
             {
                 estado = estadoMovimiento.midRes;
             }
-            else if(resistance > resistanceIni / 3 && resistance <= resistanceIni * 2/3)
+            else if (resistance > resistanceIni / 3 && resistance <= resistanceIni * 2/3)
             {
                 estado = estadoMovimiento.lowRes;
             }

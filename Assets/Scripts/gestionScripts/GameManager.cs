@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.R))
         {
-            if(juegoPausado)
+            if (juegoPausado)
             {
                 juegoPausado = false;
                 Time.timeScale = 1;
@@ -52,7 +52,6 @@ public class GameManager : MonoBehaviour
     {
         juegoMuteado = !juegoMuteado;
 
-        //TODO: cambiar sprite de boton mute al clickear
         if (juegoMuteado)
         {
             AudioListener.volume = 0f;

@@ -12,6 +12,15 @@ public class CharacterStatus : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    private void OnEnable() => GameEvents.OnLaunch += OnLaunch;
+    private void OnDisable() => GameEvents.OnLaunch -= OnLaunch;
+
+    private void OnLaunch(GameObject obj)
+    {
+        if (obj != gameObject) return;
+        ChangeStatus("air");
+    }
+
     public void ChangeStatus(string newState)
     {
         if (System.Enum.TryParse(newState, true, out estadoMovimiento parsedState))
