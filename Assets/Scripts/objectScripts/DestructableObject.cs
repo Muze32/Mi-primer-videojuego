@@ -10,7 +10,8 @@ public class DestructableObject : MonoBehaviour
 
     [Header("Puntuación")]
     [SerializeField] private int scoreValue = 100;
-
+    [Header("Laser")]
+    [SerializeField] private GameObject paredLaser;
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -26,14 +27,13 @@ public class DestructableObject : MonoBehaviour
         if (velColision > resistance)
         {
             if (ScoreManager.instance)
-            {
                 ScoreManager.instance.AddScore(scoreValue);
-            }
 
             if (soundBreak)
-            {
                 soundBreak.Play();
-            }
+
+            if (paredLaser)
+                Destroy(paredLaser);
 
             estado = estadoMovimiento.destroyed;
             Destroy(gameObject, .5f);

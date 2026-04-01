@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class Trampolin : MonoBehaviour
 {
-    [Header("Configuración")]
     [SerializeField] private float fuerzaRebote = 15f;
-    private int maxRebotes = 2;
-    private int rebotesActuales = 0;
+    [SerializeField] private AudioClip bounceSFX;
+    [SerializeField] private SoundManager soundManager;
+    private int maxRebotes = 2, rebotesActuales = 0;
 
     private void OnEnable() => GameEvents.OnLaunch += ResetRebotes;
     private void OnDisable() => GameEvents.OnLaunch -= ResetRebotes;
@@ -17,6 +17,7 @@ public class Trampolin : MonoBehaviour
 
         if (!rbObj || rebotesActuales >= maxRebotes) return;
 
+        soundManager.PlaySFXOnce(bounceSFX);
         rebotesActuales++;
 
         Vector2 velocidadEntrada = rbObj.linearVelocity;

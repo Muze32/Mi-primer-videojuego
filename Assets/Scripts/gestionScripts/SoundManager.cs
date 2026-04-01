@@ -46,9 +46,14 @@ public class SoundManager : MonoBehaviour
         sfxSource.Stop();
         sfxSource.clip = releaseHondaSFX;
         sfxSource.Play();
-
-        sfxSource.PlayOneShot(characterSfx);
+        PlaySFXOnce(characterSfx);
     }
+
+    public void PlaySFXOnce(AudioClip audioSFX)
+    {
+        sfxSource.PlayOneShot(audioSFX);
+    }
+
 
     private void ChangeMusic(AudioClip newClip)
     {
