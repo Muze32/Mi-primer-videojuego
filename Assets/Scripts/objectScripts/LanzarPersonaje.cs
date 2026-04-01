@@ -7,8 +7,9 @@ public class LanzarPersonaje : MonoBehaviour
     private Vector2 startPosition, clampedPosition;
 
     //Parametros de lanzamiento
-    [SerializeField] private float fuerzaLanzamiento = 300f;
-    [SerializeField] private float maxDistance;
+    [Range(0f, 500f)]
+    [SerializeField] private float fuerzaLanzamiento = 10f;
+    [SerializeField] private float maxDistance = 5f;
     [SerializeField] private float maxVelocity = 50f;
 
     [Header("Efectos de sonido")]
@@ -30,6 +31,7 @@ public class LanzarPersonaje : MonoBehaviour
         //Cuando se activa el script se cambia RB a kinematic (se activa despues de mover visualmente los personajes)
         rb.bodyType = RigidbodyType2D.Kinematic;
         startPosition = transform.position;
+        clampedPosition = startPosition; // ✅ inicializa aquí
     }
     void Start()
     {
