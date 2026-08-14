@@ -4381,7 +4381,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 215076772}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: nextLevel
+        m_MethodName: NextLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7748,7 +7748,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 215076772}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: resetLevel
+        m_MethodName: ResetLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -29939,11 +29939,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1029567296106532874, guid: f5b7c1cec467a8c40b5d114af4a90dde, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.29
+      value: 3.66
       objectReference: {fileID: 0}
     - target: {fileID: 1029567296106532874, guid: f5b7c1cec467a8c40b5d114af4a90dde, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.32
+      value: 16.29
       objectReference: {fileID: 0}
     - target: {fileID: 1029567296106532874, guid: f5b7c1cec467a8c40b5d114af4a90dde, type: 3}
       propertyPath: m_LocalPosition.z

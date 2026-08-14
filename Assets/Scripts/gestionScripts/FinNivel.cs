@@ -30,8 +30,9 @@ public class FinNivel : MonoBehaviour
         //Espera 1 segundo para que no tome en cuenta el momento del lanzamiento
         yield return new WaitForSeconds(1f);
 
-        //Espera hasta que el personaje este quieto
-        yield return new WaitUntil(() => rb.linearVelocity.magnitude < 0.01f);
+        //Espera hasta que el personaje este quieto o hayan pasado 15 segundos
+        float timeoutTime = Time.time + 15;
+        yield return new WaitUntil(() => rb.linearVelocity.sqrMagnitude < 0.001f || Time.time >= timeoutTime);
 
         //Si el personaje esta quieto comprueba los posibles escenarios
 
