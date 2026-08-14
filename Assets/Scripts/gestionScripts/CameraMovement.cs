@@ -26,6 +26,10 @@ public class CameraMovement : MonoBehaviour
     private Transform charTransform;
     [SerializeField] LanzarPersonaje lanzarPersonaje;
 
+    [Header("Límites Dinámicos")]
+    [Tooltip("Arrastra aquí el BoxCollider2D que creaste para delimitar el mapa.")]
+    [SerializeField] private Collider2D mapBounds;
+
     private void OnEnable()
     {
         GameEvents.OnNextTurn += ResetPosition;
@@ -50,6 +54,7 @@ public class CameraMovement : MonoBehaviour
         UpdateLimits();
         HandleMovement();
         HandleZoom();
+        ClampCameraPosition();
     }
 
     //Sigue al personaje durante el vuelo
@@ -61,6 +66,7 @@ public class CameraMovement : MonoBehaviour
         {
             transform.position = new Vector3(charTransform.position.x, transform.position.y, transform.position.z);
         }
+        ClampCameraPosition();
     }
 
     public void StartFollow(GameObject obj)
@@ -72,14 +78,22 @@ public class CameraMovement : MonoBehaviour
     //Actualiza los limites de la camara en base al zoom de esta
     private void UpdateLimits()
     {
+        if (mapBounds == null) return;
+
         float s = mainCamera.orthographicSize;
+        float halfWidth = s * mainCamera.aspect;
 
-        //Valores obtenidos en base a prueba y error
-        minX = 1.4f * s - 26f;
-        maxX = -1.4f * s + 69f;
+        Bounds bounds = mapBounds.bounds;
 
-        minY = 1.2f * s - 22f;
-        maxY = -1.2f * s + 58f;
+        // Calculamos los bordes internos basados en el tamaño de la pantalla
+        minX = bounds.min.x + halfWidth;
+        maxX = bounds.max.x - halfWidth;
+        minY = bounds.min.y + s;
+        maxY = bounds.max.y - s;
+
+        // Si la pantalla es más grande que el mapa, nos centramos en él
+        if (minX > maxX) minX = maxX = bounds.center.x;
+        if (minY > maxY) minY = maxY = bounds.center.y;
     }
 
     //Maneja el movimiento de la camara segun el teclado
@@ -91,12 +105,16 @@ public class CameraMovement : MonoBehaviour
         float inputY = Input.GetAxis("Vertical");
 
         Vector3 direction = new Vector3(inputX, inputY, 0);
-        Vector3 nextPosition = transform.position + direction * movementSpeed * Time.deltaTime;
+        transform.position += direction * movementSpeed * Time.deltaTime;
+    }
 
-        nextPosition.x = Mathf.Clamp(nextPosition.x, minX, maxX);
-        nextPosition.y = Mathf.Clamp(nextPosition.y, minY, maxY);
+    private void ClampCameraPosition()
+    {
+        if (mapBounds == null) return;
 
-        transform.position = nextPosition;
+        float clampedX = Mathf.Clamp(transform.position.x, minX, maxX);
+        float clampedY = Mathf.Clamp(transform.position.y, minY, maxY);
+        transform.position = new Vector3(clampedX, clampedY, transform.position.z);
     }
 
     //Realiza el zoom de la camara mediante la rueda del mouse
