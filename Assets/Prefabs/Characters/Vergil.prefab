@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 7041516879673258609}
   - component: {fileID: 3762555295792801473}
   - component: {fileID: 7804015649381864448}
+  - component: {fileID: 1299816571131181111}
+  - component: {fileID: 9169612857049702746}
   m_Layer: 0
   m_Name: Vergil
   m_TagString: Personaje
@@ -29,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3611296867884383223}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.44437093, y: 0.45566088, z: 0.41054228}
   m_ConstrainProportionsScale: 0
@@ -156,10 +158,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f67b8267a1de36946998b23ab22d597b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LanzarSapo
-  fuerzaLanzamiento: 500
-  maxDistance: 4
+  fuerzaLanzamiento: 10
+  maxDistance: 5
   maxVelocity: 33
-  launchSound: {fileID: 0}
+  launchSound: {fileID: 8300000, guid: a129e4bca7917c851955b21d9490f8a9, type: 3}
 --- !u!114 &7804015649381864448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,3 +174,123 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e417b7b0371ee262cb025c2e294ba3b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStatus
+--- !u!114 &1299816571131181111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3611296867884383223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 940e9ec8ea0f4174b85badd8a8211568, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VergilP
+  slashRadius: 4
+  slashDamage: 50
+  knockbackForce: 10
+  attackDelay: 0.2
+--- !u!60 &9169612857049702746
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3611296867884383223}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 7.6875, y: 11}
+    newSize: {x: 3.68, y: 6.57}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.09375, y: -5.0625}
+      - {x: 0.53125, y: -5.375}
+      - {x: 0.53125, y: -5.5}
+      - {x: 1.96875, y: -5.5}
+      - {x: 2.28125, y: -5.4375}
+      - {x: 2.09375, y: -5.0625}
+      - {x: 1.78125, y: -4.375}
+      - {x: 1.84375, y: -3.1875}
+      - {x: 0.96875, y: -1.8125}
+      - {x: 0.71875, y: -1.5}
+      - {x: 1.21875, y: -1.0625}
+      - {x: 2.78125, y: -0.8125}
+      - {x: 2.90625, y: -0.75}
+      - {x: 3.59375, y: -0.625}
+      - {x: 3.84375, y: -0.375}
+      - {x: 3.84375, y: 0.0625}
+      - {x: 3.78125, y: 0.3125}
+      - {x: 2.46875, y: 0.1875}
+      - {x: 1.03125, y: -0.0625}
+      - {x: -0.03125, y: 0.1875}
+      - {x: 0.46875, y: 0.3125}
+      - {x: 1.09375, y: 1.0625}
+      - {x: 1.09375, y: 1.625}
+      - {x: 0.90625, y: 2.125}
+      - {x: 0.34375, y: 2.75}
+      - {x: 1.03125, y: 3.25}
+      - {x: 1.09375, y: 4.625}
+      - {x: 0.34375, y: 5.5}
+      - {x: -0.03125, y: 5.5}
+      - {x: -0.15625, y: 5.375}
+      - {x: -1.34375, y: 5.3125}
+      - {x: -1.78125, y: 5.125}
+      - {x: -2.53125, y: 4.4375}
+      - {x: -2.53125, y: 3.8125}
+      - {x: -2.21875, y: 3.25}
+      - {x: -1.84375, y: 2.625}
+      - {x: -2.28125, y: 2.25}
+      - {x: -2.46875, y: 0.9375}
+      - {x: -2.84375, y: -0.1875}
+      - {x: -3.59375, y: -0.1875}
+      - {x: -3.84375, y: -0.3125}
+      - {x: -3.84375, y: -0.875}
+      - {x: -3.78125, y: -1.125}
+      - {x: -3.78125, y: -2.5}
+      - {x: -3.84375, y: -2.6875}
+      - {x: -3.84375, y: -3.75}
+      - {x: -3.59375, y: -3.75}
+      - {x: -3.40625, y: -3.5625}
+      - {x: -3.21875, y: -2.875}
+      - {x: -3.28125, y: -4}
+      - {x: -3.84375, y: -4.8125}
+      - {x: -3.84375, y: -5.375}
+      - {x: -3.78125, y: -5.5}
+      - {x: -2.15625, y: -5.5}
+      - {x: -1.96875, y: -5.4375}
+      - {x: -1.46875, y: -3.875}
+      - {x: -0.28125, y: -4.5}
+  m_UseDelaunayMesh: 1

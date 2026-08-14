@@ -31,12 +31,16 @@ public class SoundManager : MonoBehaviour
     private void OnEnable() { 
         GameEvents.OnLaunch += PlayLaunchSound;
         GameEvents.OnHold += PlayHold;
+        GameEvents.OnNextLevel += PlayNextLevel;
+        GameEvents.OnGameOver += PlayGameOver;
     }
 
     private void OnDisable()
     {
         GameEvents.OnLaunch -= PlayLaunchSound;
         GameEvents.OnHold -= PlayHold;
+        GameEvents.OnNextLevel -= PlayNextLevel;
+        GameEvents.OnGameOver -= PlayGameOver;
     }
 
     private void PlayLaunchSound(GameObject obj)

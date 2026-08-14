@@ -17,7 +17,18 @@ public class QueueManager : MonoBehaviour
     private float duracionMovimientoFila = 0.3f;
 
     private Queue<GameObject> characterQueue;
-    void Start()
+
+    private void OnEnable()
+    {
+        GameEvents.OnNextTurn += ExecuteNextTurn;       
+    }
+    
+    private void OnDisable()
+    {
+        GameEvents.OnNextTurn -= ExecuteNextTurn;       
+    }
+
+    private void Start()
     {
         CreateQueue();
         ExecuteNextTurn();
@@ -29,6 +40,16 @@ public class QueueManager : MonoBehaviour
         //Ordena la lista en base a posicion x de los personajes
         List<GameObject> orderedCharactersList = allCharacters.OrderByDescending(c => c.transform.position.x).ToList();
         characterQueue = new Queue<GameObject>(orderedCharactersList);
+
+        // Desactiva los colliders de todos los personajes en la fila para evitar colisiones accidentales
+        foreach (GameObject character in orderedCharactersList)
+        {
+            Collider2D col = character.GetComponent<Collider2D>();
+            if (col != null)
+            {
+                col.enabled = false;
+            }
+        }
     }
 
     public void ExecuteNextTurn()
@@ -97,6 +118,13 @@ public class QueueManager : MonoBehaviour
 
         // Asegura que aterrice exactamente en el punto final
         personaje.transform.position = end;
+
+        // Activa el collider para permitir la interacción y colisiones en este turno
+        Collider2D col = personaje.GetComponent<Collider2D>();
+        if (col != null)
+        {
+            col.enabled = true;
+        }
 
         LanzarPersonaje lanzarPersonaje = personaje.GetComponent<LanzarPersonaje>();
         if (lanzarPersonaje != null)

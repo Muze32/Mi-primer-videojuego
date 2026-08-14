@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class FinNivel : MonoBehaviour
 {
-    [SerializeField] private QueueManager queueManager;
-    [SerializeField] private CameraMovement cameraMovement;
-    [SerializeField] private GameManager gameManager;
-    [SerializeField] private SoundManager soundManager;
     private GameObject personajeActual;
     private Coroutine victoriaCoroutine;
 
@@ -81,20 +77,17 @@ public class FinNivel : MonoBehaviour
 
     private void AvanzarTurno()
     {
-        cameraMovement.ResetPosition();
-        queueManager.ExecuteNextTurn();
+        GameEvents.OnNextTurnEv();
     }
 
     private void AvanzarNivel()
     {
-        soundManager.PlayNextLevel();
-        gameManager.showNextLevelScreen();
+        GameEvents.OnNextLevelEv();
     }
 
     private void EjecutarGameOver()
     {
-        soundManager.PlayGameOver();
-        gameManager.showGameOverScreen();
+        GameEvents.OnGameOverEv();
     }
 
     private bool NoHayEnemigos()

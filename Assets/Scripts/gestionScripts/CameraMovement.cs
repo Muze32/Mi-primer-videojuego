@@ -26,6 +26,18 @@ public class CameraMovement : MonoBehaviour
     private Transform charTransform;
     [SerializeField] LanzarPersonaje lanzarPersonaje;
 
+    private void OnEnable()
+    {
+        GameEvents.OnNextTurn += ResetPosition;
+        GameEvents.OnLaunch += StartFollow;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.OnNextTurn -= ResetPosition;
+        GameEvents.OnLaunch -= StartFollow;
+    }
+
     private void Start()
     {
         mainCamera = GetComponent<Camera>();
@@ -51,15 +63,11 @@ public class CameraMovement : MonoBehaviour
         }
     }
 
-    private void OnEnable() => GameEvents.OnLaunch += StartFollow;
-    private void OnDisable() => GameEvents.OnLaunch -= StartFollow;
-
     public void StartFollow(GameObject obj)
     {
         this.charTransform = obj.transform;
         shouldFollow = true;
     }
-
 
     //Actualiza los limites de la camara en base al zoom de esta
     private void UpdateLimits()

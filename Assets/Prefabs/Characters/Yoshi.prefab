@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2081918432081565379}
   - component: {fileID: 2293819786309973127}
   - component: {fileID: 8944919283094451630}
+  - component: {fileID: 8638329474111539139}
   m_Layer: 0
   m_Name: Yoshi
   m_TagString: Personaje
@@ -29,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6283703574127393570}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.16463998, y: 0.16882293, z: 0.15210643}
   m_ConstrainProportionsScale: 0
@@ -156,10 +157,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f67b8267a1de36946998b23ab22d597b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LanzarSapo
-  fuerzaLanzamiento: 500
-  maxDistance: 4
+  fuerzaLanzamiento: 10
+  maxDistance: 5
   maxVelocity: 35
-  launchSound: {fileID: 0}
+  launchSound: {fileID: 8300000, guid: 15f666e15aad9d2b796e43a9896cfe34, type: 3}
 --- !u!114 &8944919283094451630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,3 +173,91 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e417b7b0371ee262cb025c2e294ba3b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStatus
+--- !u!60 &8638329474111539139
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6283703574127393570}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 20.0625, y: 24.8125}
+    newSize: {x: 3.68, y: 6.57}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 3.59375, y: -4.46875}
+      - {x: 7.59375, y: -4.59375}
+      - {x: 8.59375, y: -3.59375}
+      - {x: 9.40625, y: 1.65625}
+      - {x: 10.03125, y: 1.90625}
+      - {x: 10.03125, y: 5.40625}
+      - {x: 9.34375, y: 6.78125}
+      - {x: 8.34375, y: 7.78125}
+      - {x: 7.53125, y: 8.40625}
+      - {x: 6.03125, y: 8.40625}
+      - {x: 6.15625, y: 10.78125}
+      - {x: 4.34375, y: 12.40625}
+      - {x: 0.46875, y: 12.40625}
+      - {x: 0.21875, y: 12.34375}
+      - {x: -0.65625, y: 12.09375}
+      - {x: -1.59375, y: 10.34375}
+      - {x: -3.53125, y: 10.03125}
+      - {x: -4.53125, y: 9.40625}
+      - {x: -6.28125, y: 6.03125}
+      - {x: -6.15625, y: 4.34375}
+      - {x: -5.09375, y: 3.34375}
+      - {x: -4.59375, y: 1.90625}
+      - {x: -3.65625, y: 0.46875}
+      - {x: -6.34375, y: 0.46875}
+      - {x: -8.59375, y: -0.78125}
+      - {x: -10.03125, y: -1.84375}
+      - {x: -10.03125, y: -5.09375}
+      - {x: -9.84375, y: -5.28125}
+      - {x: -9.34375, y: -6.78125}
+      - {x: -9.21875, y: -12.34375}
+      - {x: -9.15625, y: -12.40625}
+      - {x: 2.84375, y: -12.40625}
+      - {x: 2.90625, y: -12.34375}
+      - {x: 3.03125, y: -9.09375}
+      - {x: 2.03125, y: -8.15625}
+    - - {x: 3.71875, y: -2.53125}
+      - {x: 3.96875, y: -2.34375}
+      - {x: 4.09375, y: -2.28125}
+      - {x: 4.15625, y: -2.59375}
+      - {x: 4.09375, y: -2.65625}
+      - {x: 3.71875, y: -2.65625}
+  m_UseDelaunayMesh: 1

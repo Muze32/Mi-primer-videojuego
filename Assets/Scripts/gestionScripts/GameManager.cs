@@ -14,7 +14,20 @@ public class GameManager : MonoBehaviour
     private bool juegoPausado = false;
     private bool juegoMuteado = false;
     public static bool isGameActive = true;
-    void Update()
+
+    private void OnEnable()
+    {
+        GameEvents.OnGameOver += ShowGameOverScreen;
+        GameEvents.OnNextLevel += ShowNextLevelScreen;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.OnGameOver -= ShowGameOverScreen;
+        GameEvents.OnNextLevel -= ShowNextLevelScreen;
+    }
+
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -28,7 +41,7 @@ public class GameManager : MonoBehaviour
                 juegoPausado = false;
                 Time.timeScale = 1;
             }
-            resetLevel();
+            ResetLevel();
         }
     }
 
@@ -64,19 +77,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void showGameOverScreen()
+    public void ShowGameOverScreen()
     {
         Debug.Log("Nivel Fallido.");
-        showMenu(menuGameOver);
+        ShowMenu(menuGameOver);
     }
 
-    public void showNextLevelScreen()
+    public void ShowNextLevelScreen()
     {
         Debug.Log("Felicidades. Nivel completado");
-        showMenu(menuNextLevel);
+        ShowMenu(menuNextLevel);
     }
 
-    private void showMenu(GameObject menu)
+    private void ShowMenu(GameObject menu)
     {
         btnPausa.SetActive(false);
         menu.SetActive(true);
@@ -85,21 +98,21 @@ public class GameManager : MonoBehaviour
         scoreManager.StopTimer();
 
     }
-    public void nextLevel()
+    public void NextLevel()
     {
         Debug.Log("Avanzando al siguiente nivel...");
         isGameActive = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void resetLevel()
+    public void ResetLevel()
     {
         Debug.Log("Reiniciando nivel...");
         isGameActive = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void endGame()
+    public void EndGame()
     {
         Debug.Log("Saliendo del juego...");
         Application.Quit();
