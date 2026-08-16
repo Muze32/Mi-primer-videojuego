@@ -7,8 +7,8 @@ public class LanzarPersonaje : MonoBehaviour
     private Vector2 startPosition, clampedPosition;
 
     //Parametros de lanzamiento
-    [Range(0f, 500f)]
-    [SerializeField] private float fuerzaLanzamiento = 10f;
+    [Range(0f, 50f)]
+    [SerializeField] public float fuerzaLanzamiento = 10f;
     [SerializeField] private float maxDistance = 5f;
     [SerializeField] private float maxVelocity = 50f;
 
@@ -18,10 +18,16 @@ public class LanzarPersonaje : MonoBehaviour
     public AudioClip LaunchSound => launchSound; // solo lectura
     private Camera mainCamera;
 
+    // Propiedades públicas para que TrajectoryLine pueda leerlas
+    public float FuerzaLanzamiento => fuerzaLanzamiento;
+    public float MaxVelocity => maxVelocity;
+    public Vector2 StartPosition => startPosition;
+
     //Orden de prioridad: Awake, OnEnable, Start
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        mainCamera = Camera.main;
     }
 
     private void OnEnable()
@@ -52,13 +58,20 @@ public class LanzarPersonaje : MonoBehaviour
             {
                 rb.linearVelocity = Vector2.ClampMagnitude(rb.linearVelocity, maxVelocity);
             }
+
+            // --- Alinear siempre con la velocidad ---
+            if (speed > 0.5f)
+            {
+                float angle = Mathf.Atan2(rb.linearVelocity.y, rb.linearVelocity.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(0, 0, angle);
+            }
         }
     }
 
     private void OnMouseDown()
     {
         if (!GameManager.isGameActive) return; // Bloquea la interacción si el nivel ha terminado.
-        GameEvents.OnHoldEv();
+        GameEvents.OnHoldEv(gameObject);
     }
 
     private void OnMouseDrag()
@@ -84,6 +97,15 @@ public class LanzarPersonaje : MonoBehaviour
         }
 
         transform.position = clampedPosition;
+
+        // --- Rotar hacia la dirección de lanzamiento ---
+        Vector2 direccionLanzamiento = startPosition - clampedPosition;
+        // sqrMagnitude > 0.01f evita divisiones por cero si no has arrastrado nada aún
+        if (direccionLanzamiento.sqrMagnitude > 0.01f) 
+        {
+            float angle = Mathf.Atan2(direccionLanzamiento.y, direccionLanzamiento.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
     }
 
     private void OnMouseUp()
@@ -96,10 +118,5 @@ public class LanzarPersonaje : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Dynamic;
         Vector2 direccionLanzamiento = startPosition - clampedPosition;
         rb.AddForce(direccionLanzamiento * fuerzaLanzamiento, ForceMode2D.Impulse);
-    }
-
-    public void UpdateCamera(Camera mainCamera)
-    {
-        this.mainCamera = mainCamera;
     }
 }

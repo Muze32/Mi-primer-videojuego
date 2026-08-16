@@ -3,7 +3,7 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    // 1. INSTANCIA EST�TICA
+    // 1. INSTANCIA ESTATICA
     // Esto hace que esta instancia de ScoreManager sea accesible globalmente (ej: ScoreManager.instance.AddScore(500);)
     public static ScoreManager instance;
     private int score = 0;
@@ -15,6 +15,16 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private int timePenalty;
     [SerializeField] private float penaltyInterval;
     [SerializeField] private TextMeshProUGUI finalScoreText;
+
+    private void OnEnable()
+    {
+        GameEvents.OnPause += StopTimer;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.OnPause -= StopTimer;
+    }
 
     private void Start()
     {
@@ -40,7 +50,7 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    public void StopTimer()
+    private void StopTimer()
     {
         string formattedScore = score.ToString("N0"); // Formato con separadores de miles (ej. 100,000)
         finalScoreText.text = "Final score\n\n" + formattedScore;

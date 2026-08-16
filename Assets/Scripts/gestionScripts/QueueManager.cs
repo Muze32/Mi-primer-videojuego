@@ -6,9 +6,6 @@ using System.Linq; // Necesario para usar el método OrderBy
 public class QueueManager : MonoBehaviour
 {
     [Header("Dependencias del sistema (Inyección)")]
-    [SerializeField] private Transform puntoDeLanzamiento;
-    [SerializeField] private Camera mainCamera;
-    [SerializeField] private FinNivel finNivel;
 
     //Variables referentes a la animacion de movimiento
     private float separationDistance = 5f;
@@ -59,9 +56,7 @@ public class QueueManager : MonoBehaviour
         {
             GameObject firstCharacter = characterQueue.Dequeue();
             //Agrega elementos necesarios para el personaje
-            InjectDependencies(firstCharacter);
             MoverPersonajeALaHonda(firstCharacter);
-            finNivel.ActualizarPersonaje(firstCharacter);
         }
         //Maneja el resto de elementos de la cola
         if (characterQueue.Count > 0)
@@ -71,19 +66,11 @@ public class QueueManager : MonoBehaviour
     }
 
     //Asigna dependencias necesarias para el correcto funcionamiento de LanzarPersonaje
-    private void InjectDependencies(GameObject character)
-    {
-        LanzarPersonaje lanzarPersonaje = character.GetComponent<LanzarPersonaje>();
-        if (!lanzarPersonaje) return;
-
-        // Asignación de referencias centrales
-        lanzarPersonaje.UpdateCamera(mainCamera);
-    }
 
     private void MoverPersonajeALaHonda(GameObject personaje)
     {
         // Inicia el movimiento en arco
-        StartCoroutine(MoverEnArco(personaje, personaje.transform.position, puntoDeLanzamiento.position));
+        StartCoroutine(MoverEnArco(personaje, personaje.transform.position, TrajectoryLine.launchPoint.position));
     }
 
     //Realiza la animacion del movimiento en arco hacia la honda

@@ -10,9 +10,10 @@ public class FinNivel : MonoBehaviour
     private void OnEnable() => GameEvents.OnLaunch += OnLaunch;
     private void OnDisable() => GameEvents.OnLaunch -= OnLaunch;
 
-    private void OnLaunch(GameObject _)
+    private void OnLaunch(GameObject personaje)
     {
         DetenerCheckeo();
+        personajeActual = personaje;
         StartCoroutine(ManejarFinal());
     }
 
@@ -38,7 +39,7 @@ public class FinNivel : MonoBehaviour
 
         if (NoHayEnemigos())
         {
-            AvanzarNivel();
+            GameEvents.OnNextLevelEv();
             yield break;
         }
 
@@ -53,7 +54,7 @@ public class FinNivel : MonoBehaviour
         else
         {
             Destroy(personajeActual);
-            AvanzarTurno();
+            GameEvents.OnNextTurnEv();
             victoriaCoroutine = StartCoroutine(CheckearVictoriaCoroutine());
         }
     }
@@ -63,9 +64,9 @@ public class FinNivel : MonoBehaviour
         Destroy(personajeActual);
 
         if (NoHayEnemigos())
-            AvanzarNivel();
+            GameEvents.OnNextLevelEv();
         else
-            EjecutarGameOver();
+            GameEvents.OnGameOverEv();
     }
 
     private IEnumerator CheckearVictoriaCoroutine()
@@ -73,31 +74,10 @@ public class FinNivel : MonoBehaviour
         while (GameObject.FindGameObjectsWithTag("Enemigo").Length > 0)
             yield return new WaitForSeconds(1f);
 
-        AvanzarNivel();
+        GameEvents.OnNextLevelEv();    
     }
-
-    private void AvanzarTurno()
-    {
-        GameEvents.OnNextTurnEv();
-    }
-
-    private void AvanzarNivel()
-    {
-        GameEvents.OnNextLevelEv();
-    }
-
-    private void EjecutarGameOver()
-    {
-        GameEvents.OnGameOverEv();
-    }
-
     private bool NoHayEnemigos()
     {
         return GameObject.FindGameObjectsWithTag("Enemigo").Length == 0;
-    }
-
-    public void ActualizarPersonaje(GameObject personaje)
-    {
-        personajeActual = personaje;
     }
 }

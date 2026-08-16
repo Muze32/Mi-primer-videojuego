@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject menuGameOver;    
     [SerializeField] private GameObject menuNextLevel;
     [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private ScoreManager scoreManager;
 
     private bool juegoPausado = false;
     private bool juegoMuteado = false;
@@ -91,12 +90,11 @@ public class GameManager : MonoBehaviour
 
     private void ShowMenu(GameObject menu)
     {
+        GameEvents.OnPauseEv();
         btnPausa.SetActive(false);
         menu.SetActive(true);
         scoreText.enabled = false;
         isGameActive = false;
-        scoreManager.StopTimer();
-
     }
     public void NextLevel()
     {

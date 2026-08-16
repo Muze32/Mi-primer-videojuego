@@ -20,7 +20,7 @@ public class SoundManager : MonoBehaviour
         ChangeMusic(bgMusic);
     }
 
-    public void PlayHold()
+    public void PlayHold(GameObject _)
     {
         if (!holdHondaSFX) return;
 

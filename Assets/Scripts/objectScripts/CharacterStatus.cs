@@ -6,10 +6,13 @@ public class CharacterStatus : MonoBehaviour
     private enum estadoMovimiento { idle, walking, air, attack }; //idle = 0, walking = 1, air = 2, attack = 3
     private estadoMovimiento actualState;
     private Animator animator;
+    private TrailRenderer trailRenderer;
     
     void Awake()
     {
         animator = GetComponent<Animator>();
+        trailRenderer = GetComponent<TrailRenderer>();
+        trailRenderer.emitting = false;
     }
 
     private void OnEnable() => GameEvents.OnLaunch += OnLaunch;
@@ -19,6 +22,7 @@ public class CharacterStatus : MonoBehaviour
     {
         if (obj != gameObject) return;
         ChangeStatus("air");
+        trailRenderer.emitting = true;
     }
 
     public void ChangeStatus(string newState)
