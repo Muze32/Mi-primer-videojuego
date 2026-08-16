@@ -293,6 +293,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -533,6 +534,7 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1058,7 +1060,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1774841200}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: endGame
+        m_MethodName: EndGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1139,6 +1141,7 @@ MonoBehaviour:
   menuPausa: {fileID: 0}
   menuGameOver: {fileID: 0}
   menuNextLevel: {fileID: 0}
+  scoreText: {fileID: 0}
 --- !u!4 &1774841201
 Transform:
   m_ObjectHideFlags: 0

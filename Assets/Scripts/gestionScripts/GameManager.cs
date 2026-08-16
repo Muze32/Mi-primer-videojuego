@@ -1,3 +1,4 @@
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,10 +13,12 @@ public class GameManager : MonoBehaviour
 
     private bool juegoPausado = false;
     private bool juegoMuteado = false;
-    public static bool isGameActive = true;
+    public static bool isGameActive;
 
     private void OnEnable()
     {
+        isGameActive = true;
+        Time.timeScale = 1;
         GameEvents.OnGameOver += ShowGameOverScreen;
         GameEvents.OnNextLevel += ShowNextLevelScreen;
     }
@@ -47,15 +50,7 @@ public class GameManager : MonoBehaviour
     public void TogglePause()
     {
         juegoPausado = !juegoPausado; 
-
-        if (juegoPausado)
-        {
-            Time.timeScale = 0;
-        }
-        else
-        {
-            Time.timeScale = 1;
-        }
+        Time.timeScale = juegoPausado ? 0 : 1;
 
         menuPausa.SetActive(juegoPausado);
         btnPausa.SetActive(!juegoPausado);
@@ -63,17 +58,7 @@ public class GameManager : MonoBehaviour
     public void ToggleMute()
     {
         juegoMuteado = !juegoMuteado;
-
-        if (juegoMuteado)
-        {
-            AudioListener.volume = 0f;
-            Debug.Log("Juego Muteado: Volumen = 0");
-        }
-        else
-        {
-            AudioListener.volume = 1.0f;
-            Debug.Log("Juego Desmuteado: Volumen = 1.0");
-        }
+        AudioListener.volume = juegoMuteado ? 0 : 1;
     }
 
     public void ShowGameOverScreen()
@@ -99,15 +84,19 @@ public class GameManager : MonoBehaviour
     public void NextLevel()
     {
         Debug.Log("Avanzando al siguiente nivel...");
-        isGameActive = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void ResetLevel()
     {
         Debug.Log("Reiniciando nivel...");
-        isGameActive = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void GoHome()
+    {
+        Debug.Log("Volviendo al selector de niveles...");
+        SceneManager.LoadScene(1);
     }
 
     public void EndGame()

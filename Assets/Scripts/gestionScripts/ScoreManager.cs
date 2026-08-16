@@ -10,11 +10,11 @@ public class ScoreManager : MonoBehaviour
     private float timer;
 
     // Referencia al componente de texto de la UI para mostrar la puntuaci�n
-    [SerializeField] private TextMeshProUGUI scoreText;
     [Header("Descuento por Tiempo")]
     [SerializeField] private int timePenalty;
     [SerializeField] private float penaltyInterval;
     [SerializeField] private TextMeshProUGUI finalScoreText;
+    private TextMeshProUGUI currentScoreText;
 
     private void OnEnable()
     {
@@ -28,15 +28,15 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
-        UpdateScoreDisplay();
         instance = this;
         timer = penaltyInterval;
+        currentScoreText = GetComponent<TextMeshProUGUI>();
     }
 
     private void Update()
     {
-        if(!GameManager.isGameActive) return;
-        
+        if (!GameManager.isGameActive) return;
+
         // 1. Descuenta el tiempo transcurrido
         timer -= Time.deltaTime;
 
@@ -44,10 +44,10 @@ public class ScoreManager : MonoBehaviour
         if (timer <= 0)
         {
             ApplyTimePenalty();
-
             // 3. Reinicia el temporizador
             timer = penaltyInterval;
         }
+        UpdateScoreDisplay();
     }
 
     private void StopTimer()
@@ -60,20 +60,15 @@ public class ScoreManager : MonoBehaviour
     {
         score -= timePenalty;
         score = Mathf.Max(0, score);
-
-        UpdateScoreDisplay();
     }
 
     public void AddScore(int points)
     {
         score += points;
-        UpdateScoreDisplay();
     }
 
     private void UpdateScoreDisplay()
     {
-        if (!scoreText) return;
-        
-        scoreText.text = "Score: " + score.ToString();  
+        currentScoreText.text = "Score: " + score.ToString();
     }
 }
